@@ -198,6 +198,14 @@ def next_band(fn):
     return f'''<nav class="next-band" aria-label="Next page"><div class="wrap"><a href="{h}"><span class="lbl">Next</span><b>{t}</b><span class="d">{d}</span><span class="go">{ARROW}</span></a></div></nav>'''
 
 
+def esv_links(h):
+    def link(m):
+        ref = m.group(1)
+        q = ref.replace("–", "-").replace(" ", "+")
+        return f'<cite><a class="ref" href="https://www.esv.org/{q}/" target="_blank" rel="noopener">{ref}</a></cite>'
+    return re.sub(r"<cite>((?:[1-3] )?[A-Z][a-z]+ \d+:[\d–-]+)</cite>", link, h)
+
+
 def page(filename, title, description, body, extra_head=""):
     canon = DOMAIN + "/" + ("" if filename == "index.html" else filename.replace(".html", ""))
     return f'''<!DOCTYPE html>
@@ -223,7 +231,7 @@ def page(filename, title, description, body, extra_head=""):
 <body>
 {header(filename)}
 <main id="main">
-{body}
+{esv_links(body)}
 </main>
 {FOOTER}
 <script src="assets/site.js"></script>
@@ -491,7 +499,7 @@ def give_block(tint=True):
     <div><h2>Support the ministry</h2></div>
     <div>
       <p class="lede">The center is a ministry of Saint Andrew's Presbyterian Church. Gifts help sustain its work of bringing God's Word to hurting people in Yakima.</p>
-      <div class="actions" style="margin-top:1.5rem"><a class="btn btn-ghost" href="{GIVE}">Give to the center</a></div>
+      <div class="link-row">{link_card(GIVE, "hand", "Support the ministry", "Give to the center", ' target="_blank" rel="noopener"')}</div>
     </div>
   </div>
 </section>"""
@@ -589,7 +597,7 @@ pages["index.html"] = (
       <p class="lede">Marriage falling apart. Kids rebelling. Depression settling in like fog and indwelling sin you just can't seem to defeat. Life has a way of serving up challenges that leave us scrambling for answers. At YCBC we don't offer quick fixes or shallow optimism, we offer something better: the sufficiency, authority and wisdom of God's Word applied to your actual struggles.</p>
       <div class="actions"><a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation</a><a class="tel" href="{TEL}">or call <b>{PHONE}</b></a></div>
     </div>
-    <figure class="hero-photo"><div class="bevel"><img src="assets/bible.jpg" alt="An open Bible" width="960" height="1200"></div></figure>
+    <figure class="hero-photo"><div class="bevel"><picture><source srcset="assets/bible.webp" type="image/webp"><img src="assets/bible.jpg" alt="An open Bible" width="960" height="1200"></picture></div></figure>
   </div>
 </section>
 
@@ -645,7 +653,7 @@ pages["index.html"] = (
 
 <section class="section">
   <div class="wrap person">
-    <div class="bevel"><img src="assets/david.jpg" alt="David Jamison, director of the Yakima Center for Biblical Counseling" width="960" height="1200" loading="lazy"></div>
+    <div class="bevel"><picture><source srcset="assets/david.webp" type="image/webp"><img src="assets/david.jpg" alt="David Jamison, director of the Yakima Center for Biblical Counseling" width="960" height="1200" loading="lazy"></picture></div>
     <div>
       <h2>Meet the counselor</h2>
       <p class="creds">David Jamison, MA in Counseling, Westminster Theological Seminary</p>
@@ -821,7 +829,7 @@ pages["about.html"] = (
     "Meet David Jamison, director of the Yakima Center for Biblical Counseling. MA in Counseling, Westminster Theological Seminary.",
     f'''<section class="page-hero ph-person">
   <div class="wrap">
-    <div class="bevel"><img src="assets/david.jpg" alt="David Jamison" width="960" height="1200"></div>
+    <div class="bevel"><picture><source srcset="assets/david.webp" type="image/webp"><img src="assets/david.jpg" alt="David Jamison" width="960" height="1200"></picture></div>
     <div class="ph-main">
       <p class="crumb">Meet the counselor</p>
       <h1>David Jamison</h1>

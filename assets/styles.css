@@ -1377,3 +1377,6 @@ main .section h2.signed::after{clip-path:inset(0 0 0 0)}
   .ph-strip .jump a:first-of-type,.ph-strip .contact-card > :first-child{border-top:0 !important}
   .ph-center .hgfx{width:7rem}.ph-center .rose-graphic{width:8rem}
 }
+picture{display:contents}
+cite a.ref{color:inherit;text-decoration:none;background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .35s var(--ease)}
+cite a.ref:hover{background-size:100% 1px}
