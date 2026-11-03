@@ -1353,3 +1353,27 @@ main .section h2.signed::after{clip-path:inset(0 0 0 0)}
 @keyframes doorglow{to{opacity:.35}}
 .js .loaded .door-graphic .glow{animation:doorglow 1.6s var(--ease) 2.3s forwards}
 @media (max-width:760px){.ph-gfx .door-graphic{width:4.4rem}.ph-gfx .lamp-graphic{width:6rem}}
+
+/* ---------- centered chapter openers with a strip beneath (Contact, FAQ) ---------- */
+.ph-center .hgfx{width:9rem}
+.ph-center .rose-graphic{width:10rem}
+.rose-graphic .glow{filter:blur(18px)}
+.rose-graphic .core{opacity:0}
+.door-graphic .glow{filter:blur(20px)}
+.js .loaded .rose-graphic .glow,.js .loaded .door-graphic .glow{animation:glow 2s var(--ease) 2.6s forwards}
+.js .loaded .rose-graphic .pane{animation-delay:calc(1s + var(--i) * .07s)}
+.js .loaded .door-graphic .pane{animation-delay:calc(1s + var(--i) * .08s)}
+.ph-strip .wrap{gap:2.5rem}
+.ph-strip .jump,.ph-strip .contact-card{display:flex !important;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:0;width:100%;max-width:56rem;margin:0 auto;padding:0;border:1px solid var(--rule);border-top:3px solid var(--gold);border-radius:3px;text-align:left}
+.ph-strip .jump p{display:none}
+.ph-strip .jump a,.ph-strip .contact-card > *{flex:1 1 15rem;border-top:0 !important;border-bottom:0 !important;border-left:1px solid var(--rule);padding:1.15rem 1.35rem;justify-content:flex-start}
+.ph-strip .jump a:first-of-type,.ph-strip .contact-card > :first-child{border-left:0}
+.ph-strip .jump{background:#fff}
+.ph-strip .contact-card{background:var(--forest);border-color:var(--forest);border-top-color:var(--gold)}
+.ph-strip .contact-card > *{border-left-color:var(--rule-dark)}
+@media (max-width:760px){
+  .ph-strip .jump a,.ph-strip .contact-card > *{flex-basis:100%;border-left:0;border-top:1px solid var(--rule) !important}
+  .ph-strip .contact-card > *{border-top-color:var(--rule-dark) !important}
+  .ph-strip .jump a:first-of-type,.ph-strip .contact-card > :first-child{border-top:0 !important}
+  .ph-center .hgfx{width:7rem}.ph-center .rose-graphic{width:8rem}
+}

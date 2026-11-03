@@ -443,33 +443,13 @@ def window_graphic():
 
 
 def door_graphic():
-    """An arched doorway in the logo's style: the frame draws, then the door swings open to warm light."""
-    opening = "M60 330V95a40 40 0 0180 0v235z"
-    door = (f'<g class="leaf"><path class="pane slate" style="--i:0" d="{opening}"/>'
-            '<path class="lead" pathLength="1" d="M70 320V150h60v170M70 140v-40a30 30 0 0160 0v40z"/>'
-            '<circle class="knob" cx="126" cy="230" r="4"/></g>')
-    return ('<div class="hgfx door-graphic" aria-hidden="true"><svg viewBox="0 0 200 360">'
-            f'<path class="light" d="{opening}"/><circle class="glow" cx="100" cy="210" r="34"/>'
-            f'{door}'
-            '<path class="frame" pathLength="1" d="M48 342V93a52 52 0 01104 0v249z"/>'
-            '<path class="lead" pathLength="1" d="M60 330V95a40 40 0 0180 0v235z"/>'
-            '<path class="sill" d="M34 342h132v10H34z"/><path class="sill" d="M46 352h108v8H46z"/>'
-            '</svg></div>')
+    """An arched double door of leaded glass; panes fill, then light comes on behind them."""
+    return '<div class="hgfx door-graphic" aria-hidden="true"><svg viewBox="0 0 220 360"><circle class="glow" cx="110" cy="200" r="46"/><path class="pane sage" style="--i:0" d="M42 130a68 68 0 0145-64.2L110 130z"/><path class="pane gold" style="--i:1" d="M87 65.8a68 68 0 0146 0L110 130z"/><path class="pane sage" style="--i:2" d="M133 65.8A68 68 0 01178 130H110z"/><path class="pane slate" style="--i:3" d="M42 138H76V198H42z"/><path class="pane gold" style="--i:4" d="M76 138H110V198H76z"/><path class="pane gold" style="--i:5" d="M110 138H144V198H110z"/><path class="pane slate" style="--i:6" d="M144 138H178V198H144z"/><path class="pane sage" style="--i:7" d="M42 198H76V262H42z"/><path class="pane slate" style="--i:8" d="M76 198H110V262H76z"/><path class="pane slate" style="--i:9" d="M110 198H144V262H110z"/><path class="pane sage" style="--i:10" d="M144 198H178V262H144z"/><path class="pane slate" style="--i:11" d="M42 262H76V322H42z"/><path class="pane sage" style="--i:12" d="M76 262H110V322H76z"/><path class="pane sage" style="--i:13" d="M110 262H144V322H110z"/><path class="pane slate" style="--i:14" d="M144 262H178V322H144z"/><path class="lead" pathLength="1" d="M42 322V130a68 68 0 01136 0v192zM42 130h136M42 138h136M110 62v260M42 198h136M42 262h136M76 138v184M144 138v184M110 130L87 65.8M110 130l23-64.2"/><path class="frame" pathLength="1" d="M30 334V130a80 80 0 01160 0v204z"/><path class="sill" d="M16 334h188v10H16z"/><path class="sill" d="M28 344h164v8H28z"/></svg></div>'
 
 
 def lamp_graphic():
-    """An oil lamp (Psalm 119:105): the outline draws, the body fills, then the flame catches."""
-    body = "M28 238c0-26 30-36 74-36 34 0 58 10 70 22l26-10c-4 18-18 28-34 32-18 14-40 20-66 20-46 0-70-10-70-28z"
-    return ('<div class="hgfx lamp-graphic" aria-hidden="true"><svg viewBox="0 0 230 300">'
-            '<circle class="glow" cx="192" cy="168" r="40"/>'
-            f'<path class="pane slate" style="--i:0" d="{body}"/>'
-            '<path class="pane sage" style="--i:1" d="M78 206c8-10 40-10 48 0z"/>'
-            f'<path class="frame" pathLength="1" d="{body}"/>'
-            '<path class="lead" pathLength="1" d="M70 266l-6 16h84l-6-14"/>'
-            '<path class="sill" d="M56 282h104v8H56z"/>'
-            '<path class="flame" d="M194 206c-12-8-14-24-4-38 3-4 4-10 3-16 10 8 18 22 14 36-2 9-7 15-13 18z"/>'
-            '<path class="flame-in" d="M195 204c-5-4-6-11-2-17 1 4 4 6 6 9 2 4 0 7-4 8z"/>'
-            '</svg></div>')
+    """A rose window: rings of panes fill, then the center lights."""
+    return '<div class="hgfx rose-graphic" aria-hidden="true"><svg viewBox="0 0 200 200"><circle class="glow" cx="100" cy="100" r="30"/><path class="pane sage" style="--i:0" d="M100.0 20.0A80 80 0 0 1 156.6 43.4L136.8 63.2A52 52 0 0 0 100.0 48.0z"/><path class="pane gold" style="--i:1" d="M156.6 43.4A80 80 0 0 1 180.0 100.0L152.0 100.0A52 52 0 0 0 136.8 63.2z"/><path class="pane slate" style="--i:2" d="M180.0 100.0A80 80 0 0 1 156.6 156.6L136.8 136.8A52 52 0 0 0 152.0 100.0z"/><path class="pane gold" style="--i:3" d="M156.6 156.6A80 80 0 0 1 100.0 180.0L100.0 152.0A52 52 0 0 0 136.8 136.8z"/><path class="pane sage" style="--i:4" d="M100.0 180.0A80 80 0 0 1 43.4 156.6L63.2 136.8A52 52 0 0 0 100.0 152.0z"/><path class="pane gold" style="--i:5" d="M43.4 156.6A80 80 0 0 1 20.0 100.0L48.0 100.0A52 52 0 0 0 63.2 136.8z"/><path class="pane slate" style="--i:6" d="M20.0 100.0A80 80 0 0 1 43.4 43.4L63.2 63.2A52 52 0 0 0 48.0 100.0z"/><path class="pane gold" style="--i:7" d="M43.4 43.4A80 80 0 0 1 100.0 20.0L100.0 48.0A52 52 0 0 0 63.2 63.2z"/><path class="pane sage" style="--i:8" d="M119.9 52.0A52 52 0 0 1 148.0 80.1L122.2 90.8A24 24 0 0 0 109.2 77.8z"/><path class="pane slate" style="--i:9" d="M148.0 80.1A52 52 0 0 1 148.0 119.9L122.2 109.2A24 24 0 0 0 122.2 90.8z"/><path class="pane sage" style="--i:10" d="M148.0 119.9A52 52 0 0 1 119.9 148.0L109.2 122.2A24 24 0 0 0 122.2 109.2z"/><path class="pane slate" style="--i:11" d="M119.9 148.0A52 52 0 0 1 80.1 148.0L90.8 122.2A24 24 0 0 0 109.2 122.2z"/><path class="pane sage" style="--i:12" d="M80.1 148.0A52 52 0 0 1 52.0 119.9L77.8 109.2A24 24 0 0 0 90.8 122.2z"/><path class="pane slate" style="--i:13" d="M52.0 119.9A52 52 0 0 1 52.0 80.1L77.8 90.8A24 24 0 0 0 77.8 109.2z"/><path class="pane sage" style="--i:14" d="M52.0 80.1A52 52 0 0 1 80.1 52.0L90.8 77.8A24 24 0 0 0 77.8 90.8z"/><path class="pane slate" style="--i:15" d="M80.1 52.0A52 52 0 0 1 119.9 52.0L109.2 77.8A24 24 0 0 0 90.8 77.8z"/><circle class="pane gold core" style="--i:17" cx="100" cy="100" r="24"/><path class="lead" pathLength="1" d="M100 20a80 80 0 110 160a80 80 0 110-160M100 48a52 52 0 110 104a52 52 0 110-104M100 76a24 24 0 110 48a24 24 0 110-48M100.0 76.0L100.0 20.0M117.0 83.0L156.6 43.4M124.0 100.0L180.0 100.0M117.0 117.0L156.6 156.6M100.0 124.0L100.0 180.0M83.0 117.0L43.4 156.6M76.0 100.0L20.0 100.0M83.0 83.0L43.4 43.4"/><circle class="frame" pathLength="1" cx="100" cy="100" r="90"/></svg></div>'
 
 
 def path_404_graphic():
@@ -917,7 +897,7 @@ gen_faq = [
 pages["faq.html"] = (
     "FAQs | Yakima Center for Biblical Counseling",
     "Answers about biblical counseling in Yakima: how it differs from therapy, the counseling process, confidentiality, cost, insurance, and virtual sessions.",
-    page_hero("Questions, answered", "If you don't see your question here, call or email. We're glad to help.", actions="", top=lamp_graphic(), variant="ph-gfx",
+    page_hero("Questions, answered", "If you don't see your question here, call or email. We're glad to help.", actions="", top=lamp_graphic(), variant="ph-center ph-strip",
               aside=f'''<nav class="jump" aria-label="Jump to a topic"><p>Jump to</p><a href="#about-bc">{ICONS["book"]}<span>About biblical counseling</span></a><a href="#process">{ICONS["clock"]}<span>The counseling process</span></a><a href="#practical">{ICONS["card"]}<span>Cost and practical details</span></a></nav>''') +
     faq_groups([("about-bc", "About biblical counseling", gen_faq[0:2] + gen_faq[6:7]),
                 ("process", "The counseling process", gen_faq[2:6]),
@@ -929,7 +909,7 @@ pages["faq.html"] = (
 pages["contact.html"] = (
     "Contact & Book a Free Consultation | Yakima Center for Biblical Counseling",
     "Book a free 20-minute consultation with the Yakima Center for Biblical Counseling, or call (509) 731-4772. 32 N Front Street, Yakima, WA.",
-    page_hero("Let's talk.", "All new clients begin with a free 20-minute initial consultation. Pick a time on the calendar below, or call or email and we'll get back to you.", actions="", top=door_graphic(), variant="ph-gfx", aside=contact_card()) +
+    page_hero("Let's talk.", "All new clients begin with a free 20-minute initial consultation. Pick a time on the calendar below, or call or email and we'll get back to you.", actions="", top=door_graphic(), variant="ph-center ph-strip", aside=contact_card()) +
     f"""<section class="section contact-first">
   <div class="wrap split">
     <div>
