@@ -571,6 +571,10 @@ def link_card(href, ic, small, label, extra=""):
     return f'<a class="ask-link" href="{href}"{extra}>{ICONS[ic]}<span><small>{small}</small>{label}</span><span class="arr">{ARROW}</span></a>'
 
 
+def statement(ic, big, sub):
+    return f'<section class="statement"><div class="wrap">{ICONS[ic]}<p class="st-big">{big}</p><p class="st-sub">{sub}</p></div></section>'
+
+
 def tag_card(ic, title, items):
     lis = "".join(f"<li>{i}</li>" for i in items)
     return f'<article class="tag-card"><div class="tc-head">{ICONS[ic]}<h3>{title}</h3></div><ul class="topic-list">{lis}</ul></article>'
@@ -803,6 +807,7 @@ pages["biblical-counseling.html"] = (
     "What Is Biblical Counseling? | YCBC Yakima",
     "What biblical counseling is, how it differs from therapy, and our philosophy, commitments, and distinctives. Biblical counseling in Yakima, WA.",
     page_hero("What is biblical counseling?", TAGLINE, variant="ph-center", top=window_graphic()) +
+    statement("compass", "Transformation, not simply relief.", "We don't just address symptoms or offer coping strategies. We help you see and respond to life through God's eyes.") +
     f'''{what_is()}
 <section class="section">
   <div class="wrap split">
@@ -896,6 +901,7 @@ pages["churches.html"] = (
     "Ministry Partnerships for Churches | YCBC Yakima",
     "Yakima Valley pastors: partner with YCBC for trusted biblical counseling referrals, reduced member rates, and care under your elders' oversight.",
     page_hero("For pastors &amp; churches", "Most pastors don't have the hours for long-term counseling. A ministry partnership gives your congregation a trusted place for biblical care, under your oversight.", actions=PARTNER_ACTIONS, aside=hub_graphic()) +
+    statement("church", "Rooted in Scripture. Serving across denominational lines.", "We gladly partner with churches that share a commitment to the authority and sufficiency of Scripture.") +
     f'''<section class="section">
   <div class="wrap">
     <div class="section-head"><h2>What a partnership can look like</h2><p class="lede">Every church is different, so every partnership is shaped around your congregation. Most include some of the following.</p></div>
@@ -907,7 +913,6 @@ pages["churches.html"] = (
         ("book", "Equipping your people", "We're glad to talk about ways to help your leaders and members grow in caring for one another with God's Word."),
         ("layers", "Levels that fit", "Partnerships come in several levels to fit churches of different sizes and needs."),
     ], "even")}
-    <p class="note">We serve churches across denominational lines that share a commitment to the authority and sufficiency of Scripture.</p>
   </div>
 </section>
 <!-- PASTOR ENDORSEMENT: uncomment and fill in once you have a quote and permission.

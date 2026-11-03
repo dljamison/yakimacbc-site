@@ -1479,3 +1479,5 @@ body{overflow-anchor:none}
 .st-big{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink);margin:0;max-width:22ch}
 .st-sub{font-size:clamp(1.15rem,1.8vw,1.35rem);color:var(--ink-soft);margin:1rem auto 0;max-width:32rem}
 @media (max-width:760px){.statement{padding:3.25rem 0}}
+.st-sub{max-width:38rem}
+.ph-center + .statement{border-top:1px solid var(--rule)}
