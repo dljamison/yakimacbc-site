@@ -575,19 +575,43 @@ pages = {}
 # ---------------------------------------------------------------- HOME
 verse = "The purpose in a man's heart is like deep water, but a man of understanding will draw it out."
 verse_html = " ".join(f'<span class="w">{w}</span>' for w in verse.split())
+AREAS = ["Yakima", "Selah", "Union Gap", "Terrace Heights", "Moxee", "Wapato", "Naches", "Yakima Valley"]
+PERSON = {"@type": "Person", "@id": DOMAIN + "/about#david", "name": "David Jamison",
+          "jobTitle": "Director, Yakima Center for Biblical Counseling", "url": DOMAIN + "/about",
+          "image": DOMAIN + "/assets/david.jpg",
+          "alumniOf": {"@type": "CollegeOrUniversity", "name": "Westminster Theological Seminary"},
+          "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "MA in Counseling"},
+          "worksFor": {"@id": DOMAIN + "/#center"}}
 org = {
-    "@context": "https://schema.org", "@type": "ProfessionalService",
-    "name": "Yakima Center for Biblical Counseling", "url": DOMAIN,
-    "telephone": "+1-509-731-4772", "email": EMAIL,
-    "address": {"@type": "PostalAddress", "streetAddress": "32 N Front Street, Upper Floor",
-                "addressLocality": "Yakima", "addressRegion": "WA", "postalCode": "98901", "addressCountry": "US"},
-    "areaServed": "Yakima, Washington",
-    "description": "Biblical counseling for individuals, couples, and families. A ministry of Saint Andrew's Presbyterian Church.",
-    "priceRange": "$100 per session; free initial consultation",
+    "@context": "https://schema.org",
+    "@graph": [{
+        "@type": ["ProfessionalService", "LocalBusiness"], "@id": DOMAIN + "/#center",
+        "name": "Yakima Center for Biblical Counseling", "alternateName": "YCBC", "url": DOMAIN,
+        "logo": DOMAIN + "/assets/logo.png", "image": DOMAIN + "/assets/og.jpg",
+        "slogan": "Truth that transforms.",
+        "telephone": "+1-509-731-4772", "email": EMAIL,
+        "address": {"@type": "PostalAddress", "streetAddress": "32 N Front Street, Upper Floor",
+                    "addressLocality": "Yakima", "addressRegion": "WA", "postalCode": "98901", "addressCountry": "US"},
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=32+N+Front+St,+Yakima,+WA+98901",
+        "areaServed": [{"@type": "City", "name": a + ", WA"} if a != "Yakima Valley" else {"@type": "Place", "name": "Yakima Valley, WA"} for a in AREAS],
+        "description": "Biblical counseling for individuals, couples, and families in Yakima, WA, applying the sufficiency, authority and wisdom of God's Word to life's struggles. A ministry of Saint Andrew's Presbyterian Church (PCA).",
+        "priceRange": "$100 per session; free 20-minute initial consultation",
+        "parentOrganization": {"@type": "Church", "name": "Saint Andrew's Presbyterian Church", "url": CHURCH},
+        "founder": {"@id": DOMAIN + "/about#david"}, "employee": {"@id": DOMAIN + "/about#david"},
+        "potentialAction": {"@type": "ReserveAction", "target": BOOK, "name": "Book a free consultation"},
+        "sameAs": [CHURCH, SUBSTACK],
+        "knowsAbout": ["Biblical counseling", "Christian marriage counseling", "Anxiety and worry", "Depression", "Counseling for men", "Pornography and sexual sin", "Anger", "Parenting", "Pre-marital counseling", "Grief"]
+    }, PERSON]
 }
+
+
+def service_ld(fn, name, desc):
+    return f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": [{"@type": "Service", "name": name, "serviceType": "Biblical counseling", "description": desc, "url": DOMAIN + "/" + fn.replace(".html", ""), "provider": {"@id": DOMAIN + "/#center"}, "areaServed": "Yakima, WA", "offers": {"@type": "Offer", "price": "100", "priceCurrency": "USD", "description": "Per 50–60 minute session; initial 20-minute consultation free"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": DOMAIN + "/"}, {"@type": "ListItem", "position": 2, "name": name, "item": DOMAIN + "/" + fn.replace(".html", "")}]}]})}</script>'
+
+
 pages["index.html"] = (
-    "Biblical & Christian Counseling in Yakima, WA | Yakima Center for Biblical Counseling",
-    "Biblical counseling in Yakima for marriages, men, families, anxiety, and depression. The sufficiency of God's Word applied to your actual struggles. Free 20-minute consultation.",
+    "Biblical & Christian Counseling in Yakima, WA | YCBC",
+    "Biblical counseling in Yakima, WA for marriages, men, families, anxiety, and depression. God's Word applied to your actual struggles. Free consultation.",
     f'''<section class="hero">
   <div class="hero-glow"></div>
   <div class="wrap">
@@ -689,7 +713,7 @@ pages["marriage.html"] = (
         ("Change between sessions", "Expect homework: Scripture, prayer, and new rhythms of speaking, listening, repenting, and forgiving that carry into everyday life.", ""),
     ]) +
     faq(marriage_faq) + cross("marriage.html") + cta(),
-    faq_jsonld(marriage_faq),
+    faq_jsonld(marriage_faq) + service_ld("marriage.html", "Christian marriage counseling", 'Biblical marriage counseling in Yakima for couples facing conflict, broken trust, or distance, and pre-marital counseling.'),
 )
 
 # ---------------------------------------------------------------- ANXIETY
@@ -700,7 +724,7 @@ anx_faq = [
     ("What if I'm in crisis right now?", "For immediate safety concerns, call 911 or the Suicide & Crisis Lifeline (988). We provide spiritual guidance, not emergency mental health services."),
 ]
 pages["anxiety.html"] = (
-    "Biblical Counseling for Anxiety, Worry & Stress in Yakima | YCBC",
+    "Christian Counseling for Anxiety & Stress in Yakima | YCBC",
     "Christian counseling in Yakima for anxiety, worry, stress, fear, and depression, grounded in God's Word. Free 20-minute initial consultation.",
     page_hero("Biblical counseling for anxiety, worry &amp; stress",
               "Depression settling in like fog. Worry that won't let go. Scripture speaks to fear and sorrow with more honesty than you might expect, and it speaks to the whole person.",
@@ -712,7 +736,7 @@ pages["anxiety.html"] = (
         ("Moving toward Christ", "Suffering calls for moving toward Christ, mourning with Him, and maturing through trials. You'll learn to bring specific fears to God and take the next faithful step.", "“Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.” Philippians 4:6"),
     ]) +
     faq(anx_faq) + cross("anxiety.html") + cta(),
-    faq_jsonld(anx_faq),
+    faq_jsonld(anx_faq) + service_ld("anxiety.html", "Biblical counseling for anxiety, worry and stress", "Biblical counseling in Yakima for anxiety, worry, stress, fear, and depression, grounded in God's Word."),
 )
 
 # ---------------------------------------------------------------- MEN
@@ -724,7 +748,7 @@ men_faq = [
 ]
 pages["men.html"] = (
     "Biblical Counseling for Men in Yakima, WA | YCBC",
-    "Christian counseling for men in Yakima: pornography, anger, marriage, discipline, and leading your family, grounded in Scripture. Free 20-minute initial consultation.",
+    "Christian counseling for men in Yakima: pornography, anger, marriage, discipline, and leading your family, grounded in Scripture. Free consultation.",
     page_hero("Biblical counseling for men",
               "Indwelling sin you just can't seem to defeat. Anger that scares your kids. A marriage gone cold. Many men carry these things for years without saying them out loud. You don't have to.",
               ("index.html#help", "How we help"), facts=True, icon="men") +
@@ -738,7 +762,7 @@ pages["men.html"] = (
         ("Grace that changes you", "Real change flows from what Christ has accomplished for you, not from willpower and effort. The gospel doesn't excuse sin; it gives you the power to fight it.", "“For the grace of God has appeared… training us to renounce ungodliness and worldly passions.” Titus 2:11–12"),
     ], note="<strong>We have a particular burden for men.</strong> Many never thought counseling was for them. We want them to know it is.") +
     faq(men_faq) + cross("men.html") + cta("Take the first step.", "All new clients begin with a free, confidential 20-minute consultation. No pressure, and no obligation."),
-    faq_jsonld(men_faq),
+    faq_jsonld(men_faq) + service_ld("men.html", "Biblical counseling for men", 'Biblical counseling for men in Yakima: pornography, anger, marriage, discipline, and leading a family.'),
 )
 
 # ---------------------------------------------------------------- FAMILY
@@ -749,7 +773,7 @@ fam_faq = [
 ]
 pages["family.html"] = (
     "Christian Family & Parenting Counseling in Yakima, WA | YCBC",
-    "Biblical counseling for families and parents in Yakima: discipline, teenage rebellion, blended families, adoption and foster care. Free 20-minute initial consultation.",
+    "Biblical counseling for Yakima families and parents: discipline, teen rebellion, blended families, adoption and foster care. Free consultation.",
     page_hero("Christian family &amp; parenting counseling",
               "Kids rebelling. Parents divided. A home that feels more like a battlefield than a refuge. God's Word speaks to the whole household, and there's hope for yours.",
               ("index.html#help", "How we help"), facts=True, icon="family") +
@@ -760,12 +784,12 @@ pages["family.html"] = (
         ("A plan for your home", "Expect clear, workable next steps: how to talk, how to correct, how to repair, and how to keep going when it's hard.", ""),
     ]) +
     faq(fam_faq) + cross("family.html") + cta(),
-    faq_jsonld(fam_faq),
+    faq_jsonld(fam_faq) + service_ld("family.html", "Christian family and parenting counseling", 'Biblical counseling for families and parents in Yakima: discipline, teenage rebellion, blended families, adoption and foster care.'),
 )
 
 # ---------------------------------------------------------------- APPROACH
 pages["biblical-counseling.html"] = (
-    "What Is Biblical Counseling? | Yakima Center for Biblical Counseling",
+    "What Is Biblical Counseling? | YCBC Yakima",
     "What biblical counseling is, how it differs from therapy, and our philosophy, commitments, and distinctives. Biblical counseling in Yakima, WA.",
     page_hero("What is biblical counseling?", TAGLINE, variant="ph-center", top=window_graphic()) +
     f'''{what_is()}
@@ -804,7 +828,7 @@ pages["biblical-counseling.html"] = (
 
 # ---------------------------------------------------------------- FEES
 pages["fees.html"] = (
-    "Sessions & Fees | Yakima Center for Biblical Counseling",
+    "Sessions & Fees | Biblical Counseling in Yakima | YCBC",
     "Biblical counseling in Yakima: free 20-minute initial consultation, $100 per 50–60 minute session, in person or virtual. Reduced rates for partner churches.",
     page_hero("Sessions &amp; fees", "Our counselors have invested years in theological training and biblical counseling methodology. This fee reflects that preparation and ensures we can provide consistent, quality care.",
               variant="ph-wide", below=path_graphic()) +
@@ -825,7 +849,7 @@ pages["fees.html"] = (
 
 # ---------------------------------------------------------------- ABOUT
 pages["about.html"] = (
-    "Meet the Counselor: David Jamison | Yakima Center for Biblical Counseling",
+    "David Jamison, Biblical Counselor in Yakima | YCBC",
     "Meet David Jamison, director of the Yakima Center for Biblical Counseling. MA in Counseling, Westminster Theological Seminary.",
     f'''<section class="page-hero ph-person">
   <div class="wrap">
@@ -853,12 +877,13 @@ pages["about.html"] = (
     </div>
   </div>
 </section>''' + cta(),
+    f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", **PERSON})}</script>'
 )
 
 # ---------------------------------------------------------------- CHURCHES
 pages["churches.html"] = (
-    "Ministry Partnerships for Churches | Yakima Center for Biblical Counseling",
-    "Pastors and churches in the Yakima Valley: partner with YCBC for trusted biblical counseling referrals, reduced member rates, and care under your elders' oversight.",
+    "Ministry Partnerships for Churches | YCBC Yakima",
+    "Yakima Valley pastors: partner with YCBC for trusted biblical counseling referrals, reduced member rates, and care under your elders' oversight.",
     page_hero("For pastors &amp; churches", "Most pastors don't have the hours for long-term counseling. A ministry partnership gives your congregation a trusted place for biblical care, under your oversight.", actions=PARTNER_ACTIONS, aside=hub_graphic()) +
     f'''<section class="section">
   <div class="wrap">
@@ -903,7 +928,7 @@ gen_faq = [
     ("Can we meet virtually?", "Yes. Virtual sessions are conducted via the secure client portal and follow the same format, duration, and fees as in-person sessions."),
 ]
 pages["faq.html"] = (
-    "FAQs | Yakima Center for Biblical Counseling",
+    "Biblical Counseling FAQs | YCBC Yakima",
     "Answers about biblical counseling in Yakima: how it differs from therapy, the counseling process, confidentiality, cost, insurance, and virtual sessions.",
     page_hero("Questions, answered", "If you don't see your question here, call or email. We're glad to help.", actions="", top=lamp_graphic(), variant="ph-center ph-strip",
               aside=f'''<nav class="jump" aria-label="Jump to a topic"><p>Jump to</p><a href="#about-bc">{ICONS["book"]}<span>About biblical counseling</span></a><a href="#process">{ICONS["clock"]}<span>The counseling process</span></a><a href="#practical">{ICONS["card"]}<span>Cost and practical details</span></a></nav>''') +
@@ -915,7 +940,7 @@ pages["faq.html"] = (
 
 # ---------------------------------------------------------------- CONTACT
 pages["contact.html"] = (
-    "Contact & Book a Free Consultation | Yakima Center for Biblical Counseling",
+    "Contact & Book a Free Consultation | YCBC Yakima",
     "Book a free 20-minute consultation with the Yakima Center for Biblical Counseling, or call (509) 731-4772. 32 N Front Street, Yakima, WA.",
     page_hero("Let's talk.", "All new clients begin with a free 20-minute initial consultation. Pick a time on the calendar below, or call or email and we'll get back to you.", actions="", top=door_graphic(), variant="ph-center ph-strip", aside=contact_card()) +
     f"""<section class="section contact-first">
@@ -936,7 +961,7 @@ pages["contact.html"] = (
   <div class="wrap map-wrap">
     <div>
       <h2>Finding us</h2>
-      <p class="lede" style="margin-top:1.25rem">Our office is on the upper floor of 32 N Front Street, in downtown Yakima.</p>
+      <p class="lede" style="margin-top:1.25rem">Our office is on the upper floor of 32 N Front Street, in downtown Yakima. We serve Yakima, Selah, Union Gap, Terrace Heights, Moxee, and the wider Yakima Valley, with virtual sessions for those farther away.</p>
       <div class="actions" style="margin-top:1.75rem"><a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=32+N+Front+St,+Yakima,+WA+98901" target="_blank" rel="noopener">Get directions</a></div>
     </div>
     <div class="map-frame"><iframe title="Map to our office at 32 N Front Street, Yakima" src="https://maps.google.com/maps?q=32+N+Front+St,+Yakima,+WA+98901&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
@@ -977,9 +1002,40 @@ os.makedirs(OUT, exist_ok=True)
 for fn, (title, desc, body, *extra) in pages.items():
     with open(os.path.join(OUT, fn), "w") as f:
         f.write(page(fn, title, desc, body, extra[0] if extra else ""))
-urls = "".join(f"<url><loc>{DOMAIN}/{'' if fn=='index.html' else fn.replace('.html','')}</loc></url>" for fn in pages if fn != "404.html")
+import datetime
+TODAY = datetime.date.today().isoformat()
+urls = "".join(f"<url><loc>{DOMAIN}/{'' if fn=='index.html' else fn.replace('.html','')}</loc><lastmod>{TODAY}</lastmod></url>" for fn in pages if fn != "404.html")
 with open(os.path.join(OUT, "sitemap.xml"), "w") as f:
     f.write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n')
 with open(os.path.join(OUT, "robots.txt"), "w") as f:
     f.write(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
 print("built", len(pages), "pages")
+
+# llms.txt: a plain summary for AI assistants that read the site
+LLMS = f"""# Yakima Center for Biblical Counseling (YCBC)
+
+> Biblical counseling for individuals, couples, and families in Yakima, Washington. A ministry of Saint Andrew's Presbyterian Church (PCA). We apply the sufficiency, authority and wisdom of God's Word to life's struggles. Our aim is transformation, not simply relief.
+
+- Location: Upper floor, 32 N Front Street, Yakima, WA 98901 (in person; virtual sessions available)
+- Serving: Yakima, Selah, Union Gap, Terrace Heights, Moxee, and the Yakima Valley
+- Phone: {PHONE}; Email: {EMAIL}
+- Fees: free 20-minute initial consultation; $100 per 50–60 minute session; reduced rates for members of partner churches; insurance not accepted
+- Counselor: David Jamison, MA in Counseling, Westminster Theological Seminary
+- Booking: {BOOK}
+- Important: biblical counseling is religious ministry under Washington State religious exemption RCW 18.19.040(6). Counselors are not state-licensed mental health professionals and do not provide psychotherapy or diagnosis. In a crisis, call 911 or 988.
+
+## Pages
+- [Home]({DOMAIN}/): overview and how we help
+- [Biblical counseling]({DOMAIN}/biblical-counseling): what biblical counseling is, our philosophy, commitments, and distinctives
+- [Christian marriage counseling]({DOMAIN}/marriage)
+- [Anxiety, worry & stress]({DOMAIN}/anxiety)
+- [Biblical counseling for men]({DOMAIN}/men)
+- [Family & parenting]({DOMAIN}/family)
+- [Sessions & fees]({DOMAIN}/fees)
+- [Meet the counselor]({DOMAIN}/about)
+- [For pastors & churches]({DOMAIN}/churches): ministry partnerships
+- [FAQs]({DOMAIN}/faq)
+- [Contact & booking]({DOMAIN}/contact)
+"""
+with open(os.path.join(OUT, "llms.txt"), "w") as f:
+    f.write(LLMS)
