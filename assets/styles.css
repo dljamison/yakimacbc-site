@@ -1257,3 +1257,45 @@ main .section h2.signed::after{clip-path:inset(0 0 0 0)}
 .wi-intro .link-row{flex-direction:column;align-items:flex-start}
 .wi-intro .link-row .ask-link{min-width:17.5rem;justify-content:flex-start}
 .wi-intro .link-row .ask-link .arr{margin-left:auto}
+
+/* =====================================================================
+   v14
+   ===================================================================== */
+
+/* ---------- scenes hold in the center while they play ---------- */
+.scene{height:calc(100vh + 60vh);overflow:visible}
+.scene .stage{position:sticky;top:0;height:100vh;padding:0;display:flex;align-items:center;overflow:hidden}
+.scene .stage > .wrap{padding-top:3rem;padding-bottom:3rem}
+@media (max-width:760px){.scene{height:calc(100svh + 50svh)}.scene .stage{height:100svh;padding:0}}
+@media (prefers-reduced-motion:reduce){.scene{height:auto}.scene .stage{position:static;height:auto;padding:6rem 0}}
+
+/* ---------- cards: equal sizes everywhere ---------- */
+@media (min-width:761px){
+  .tiles,.pts,.dist-grid,.wi-grid,.ff,.also-grid{grid-auto-rows:1fr}
+  .dist-grid:not(.even) .dist,.dist-grid:not(.even) .dist:nth-child(n+4){grid-column:span 2}
+  .dist-grid{align-items:stretch}
+}
+.dist{display:flex;flex-direction:column;align-self:stretch}
+.dist .dist-sum{min-height:4.6em}
+.dist-more{margin-top:auto}
+.dist-more summary{padding-top:.85rem}
+.pt{height:100%}
+.pt .pt-q{margin-top:auto}
+.tile,.tag-card,.ff-card,.wi-cell{height:100%}
+/* expanding a distinctive grows only its own row */
+.dist-grid:has(.dist-more[open]:not(.shut)){grid-auto-rows:auto}
+
+/* the closing card on the distinctives grid */
+.dist-cta{background:var(--forest) !important;border-color:var(--forest) !important;color:var(--on-dark);--cut-bg:var(--forest);justify-content:center}
+.dist-cta h3{color:#fff}
+.dist-cta .dist-sum{color:var(--on-dark-soft) !important;min-height:0;margin-bottom:1.5rem !important}
+.dist-cta .btn{align-self:flex-start}
+
+/* ---------- seams: the logo's frame edge — a slate bar over a fine gold line ---------- */
+.seam-a :is(.scene,.cta-band,.sage,.site-footer)::before{top:0;height:4px;background:var(--slate);opacity:1;box-shadow:0 5px 0 -4px var(--gold)}
+.seam-a :is(.scene,.cta-band,.sage,.site-footer)::after{top:4px;left:50%;width:2px;height:14px;background:var(--gold);opacity:1;transform:translateX(-50%)}
+.seam-a .scene::before,.seam-a .site-footer::before{background:#0f1714}
+.seam-a .cta-band::before{background:#6f3433}
+.seam-a .cta-band::after{background:var(--gold);opacity:1}
+.dist .dist-sum{min-height:0;margin-bottom:1.1rem !important}
+.dist-more{border-top:1px solid rgba(74,89,86,.22)}

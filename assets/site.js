@@ -184,20 +184,14 @@
     return f ? { el: el, fn: f(el), target: 0, shown: -1 } : null;
   }).filter(Boolean);
 
-  // Progress is tied to scroll: 0 when the scene's content has just come fully into view,
-  // 1 when its top reaches the header. The drawn value eases toward the target each frame,
-  // so scrolling feels smooth and nothing jumps.
-  function headerH() { return header ? header.offsetHeight : 72; }
+  // Each scene holds in the center of the screen while it plays.
+  // Progress runs from the moment the stage pins to the moment it releases.
   function measure() {
-    var vh = window.innerHeight, hh = headerH();
+    var vh = window.innerHeight;
     running.forEach(function (s) {
-      var c = s.el.querySelector('.stage > .wrap') || s.el;
-      var r = c.getBoundingClientRect();
-      // start: content has just come fully into view (or nearly, for very tall scenes)
-      var start = r.height < vh * 0.85 ? vh - r.height - 8 : vh * 0.15;
-      // end: at least 45% of a screen of scrolling later, so it never rushes
-      var end = start - Math.max(vh * 0.45, start - (hh + 8));
-      s.target = reduce ? 1 : clamp((start - r.top) / (start - end));
+      var r = s.el.getBoundingClientRect();
+      var span = s.el.offsetHeight - vh;
+      s.target = reduce ? 1 : (span > 0 ? clamp(-r.top / span) : clamp((vh * 0.6 - r.top) / (vh * 0.5)));
     });
   }
   var raf = null;
@@ -239,12 +233,12 @@
       if (d.open && !d.classList.contains('shut')) {
         d.classList.add('shut');
         var done = function (ev) {
-          if (ev && ev.target !== panel) return;
+          if (ev && (ev.target !== panel || ev.propertyName !== 'grid-template-rows')) return;
           panel.removeEventListener('transitionend', done);
           if (d.classList.contains('shut')) { d.open = false; d.classList.remove('shut'); }
         };
         panel.addEventListener('transitionend', done);
-        setTimeout(done, 500);
+        setTimeout(done, 650);
       } else {
         d.classList.add('shut');
         d.open = true;
