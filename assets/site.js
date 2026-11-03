@@ -34,7 +34,7 @@
   function onScrollHeader() {
     var y = window.scrollY;
     if (header) {
-      if (y > 72) header.classList.add('condensed'); else if (y < 16) header.classList.remove('condensed');
+      if (y > 140) header.classList.add('condensed'); else if (y < 16) header.classList.remove('condensed');
       var menuOpen = document.querySelector('.nav .drop.open');
       if (y > 420 && y > lastY + 4 && !menuOpen) header.classList.add('tucked');
       else if (y < lastY - 4 || y <= 420) header.classList.remove('tucked');
