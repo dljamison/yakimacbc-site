@@ -13,6 +13,8 @@ CHURCH = "https://www.saintandrewsyakima.org/"
 GIVE = "https://standrewsyakima.churchcenter.com/giving/to/biblical-counseling-center"
 BOOK_ATTR = f'href="{BOOK}" target="_blank" rel="noopener" data-goatcounter-click="book-consultation" data-goatcounter-title="Book a free consultation"'
 GOATCOUNTER = "yakimacbc"
+CLIENT_BOOK = BOOK
+CLIENT_ATTR = f'href="{CLIENT_BOOK}" target="_blank" rel="noopener" data-goatcounter-click="client-booking" data-goatcounter-title="Current client booking"'
 
 HELP = [
     ("marriage.html", "Marriage", "Conflict, distance, broken trust, and preparing well for marriage."),
@@ -75,6 +77,7 @@ ICONS = {
     "flame": _ic('<path class="s" d="M20 35c-6.5 0-10.5-4.3-10.5-10 0-6.5 6-10 7-17 4 3 10 8.5 10 17"/><path class="g" d="M20 35c3.6 0 6-2.4 6-5.8 0-3.6-3-5.6-4.2-9.2-2.5 2-7.8 4.8-7.8 9.2 0 3.4 2.4 5.8 6 5.8z"/>'),
     "check": _ic('<circle class="s" cx="20" cy="20" r="14.5"/><path class="g" d="M13.5 20.5l4.5 4.5 8.5-9"/>'),
     "not": _ic('<circle class="s" cx="20" cy="20" r="14.5"/><path class="g" d="M10 30L30 10"/>'),
+    "key": _ic('<circle class="s" cx="13" cy="20" r="7"/><path class="s" d="M20 20h15M30 20v5M35 20v4"/><circle class="g" cx="13" cy="20" r="2.5"/>'),
     "pin": _ic('<path class="s" d="M20 35s11-10.5 11-19a11 11 0 00-22 0c0 8.5 11 19 11 19z"/><circle class="g" cx="20" cy="16" r="4"/>'),
 }
 ICONS = {k: v.replace('<svg class="ic"', f'<svg class="ic ic-{k}"', 1) for k, v in ICONS.items()}
@@ -119,6 +122,7 @@ def header(page):
       <a href="fees.html"{cur(page,"fees.html")}>Sessions &amp; fees</a>
       <a href="churches.html"{cur(page,"churches.html")}>For churches</a>
     </nav>
+    <a class="client-link" {CLIENT_ATTR} title="Current clients: book a session">{ICONS["key"]}<span>Current clients</span></a>
     <a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu">{BURGER}</button>
   </div>
@@ -136,6 +140,7 @@ def header(page):
   <div class="m-foot">
     <a class="btn btn-gold" {BOOK_ATTR}>Book a free consultation</a>
     <a class="m-tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call {PHONE}</a>
+    <a class="m-client" {CLIENT_ATTR}>{ICONS["key"]}<span>Current clients: book your next session</span></a>
     <p class="mob-tag">{TAGLINE}</p>
   </div>
 </div>'''
@@ -158,7 +163,7 @@ FOOTER = f'''<footer class="site-footer">
       </div>
       <div>
         <h4>Visit or call</h4>
-        <ul class="foot-contact"><li>Upper floor, 32 N Front St<br>Yakima, WA 98901</li><li><a href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{PHONE}</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li><a {BOOK_ATTR}>Schedule an appointment</a></li><li><a href="{GIVE}">Support the ministry</a></li></ul>
+        <ul class="foot-contact"><li>Upper floor, 32 N Front St<br>Yakima, WA 98901</li><li><a href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{PHONE}</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li><a {BOOK_ATTR}>Schedule an appointment</a></li><li><a {CLIENT_ATTR}>Current clients: book a session</a></li><li><a href="{GIVE}">Support the ministry</a></li></ul>
       </div>
     </div>
     <div class="crisis-bar">
@@ -207,6 +212,10 @@ def esv_links(h):
     return re.sub(r"<cite>((?:[1-3] )?[A-Z][a-z]+ \d+:[\d–-]+)</cite>", link, h)
 
 
+import hashlib
+ASSET_V = hashlib.md5(open(os.path.join(OUT, "assets", "styles.css"), "rb").read() + open(os.path.join(OUT, "assets", "site.js"), "rb").read()).hexdigest()[:8]
+
+
 def page(filename, title, description, body, extra_head=""):
     canon = DOMAIN + "/" + ("" if filename == "index.html" else filename.replace(".html", ""))
     return f'''<!DOCTYPE html>
@@ -226,7 +235,7 @@ def page(filename, title, description, body, extra_head=""):
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preload" href="assets/fonts/alegreya-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v={ASSET_V}">
 {extra_head}
 </head>
 <body>
@@ -235,7 +244,7 @@ def page(filename, title, description, body, extra_head=""):
 {esv_links(body)}
 </main>
 {FOOTER}
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v={ASSET_V}"></script>
 <script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>'''
@@ -950,6 +959,7 @@ pages["contact.html"] = (
     <div>
       <h2>Schedule an appointment</h2>
       <ol class="mini-steps"><li><b>Pick a time</b> for your free 20-minute consultation.</li><li><b>Talk it through</b> with David in person at our downtown office, or by video if you prefer.</li><li><b>Decide together</b> whether to begin regular sessions.</li></ol>
+      <div class="client-box"><p><strong>Already a client?</strong> Book your next session on the same calendar, or online any time.</p>{link_card(CLIENT_BOOK, "key", "Current clients", "Book your next session", ' target="_blank" rel="noopener" data-goatcounter-click="client-booking"')}</div>
       <p class="note"><strong>Crisis resources.</strong> For immediate safety concerns, call 911 or the Suicide &amp; Crisis Lifeline (988). We provide spiritual guidance, not emergency mental health services.</p>
       <blockquote class="pull"><p>For the word of God is living and active, sharper than any two-edged sword, piercing to the division of soul and of spirit, of joints and of marrow, and discerning the thoughts and intentions of the heart.</p><cite>Hebrews 4:12</cite></blockquote>
     </div>

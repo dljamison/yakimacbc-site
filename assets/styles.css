@@ -1426,3 +1426,18 @@ body{overflow-anchor:none}
 @media (max-width:760px){.thread ol.has-icons{padding-left:3.75rem}.thread .tic{left:-3.75rem;width:2.5rem;height:2.5rem;margin-top:-1.25rem}.thread ol.has-icons::before,.thread ol.has-icons::after{left:1.25rem}}
 .nav .menu .mega-foot .btn{display:inline-flex}
 .nav .menu .mega-foot .btn:hover{background-color:#7a3938;color:#fff}
+
+/* ---------- current clients ---------- */
+.client-link{display:inline-flex;align-items:center;gap:.45rem;margin-left:.9rem;font-family:var(--sans);font-size:.95rem;font-weight:500;color:var(--ink-soft);text-decoration:none;white-space:nowrap;transition:color .2s}
+.client-link .ic{width:1.35rem;height:1.35rem}
+.client-link:hover{color:var(--oxblood)}
+.client-link:hover .ic .g{transform:rotate(-20deg)}
+@media (max-width:1280px){.client-link span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.client-link{margin-left:.5rem}}
+@media (max-width:1120px){.client-link{display:none}}
+.mobile-nav a.m-client{display:flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--sans);font-size:.98rem;color:var(--on-dark);padding:.6rem;border:1px solid var(--rule-dark);border-radius:3px}
+.mobile-nav a.m-client .ic{width:1.3rem;height:1.3rem}
+.mobile-nav a.m-client .ic .s{stroke:var(--sage)}
+.client-box{margin-top:2rem;padding:1.4rem 1.5rem;background:var(--paper-2);border-radius:3px}
+.client-box p{margin:0 0 1rem;color:var(--ink-soft)}
+.client-box p strong{color:var(--ink);font-family:var(--sans)}
+.client-box .ask-link{background:var(--paper)}
