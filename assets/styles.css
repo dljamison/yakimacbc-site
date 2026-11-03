@@ -55,9 +55,9 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-weight:700;font-size:1.05rem;letter-spacing:.01em;text-decoration:none;padding:.85rem 1.4rem;border:2px solid transparent;border-radius:2px;line-height:1.1;transition:background-color .2s,color .2s,border-color .2s}
 .btn-primary{background:var(--oxblood);color:#fff;border-color:var(--oxblood)}
-.btn-primary:hover{background:#7a3938;border-color:#7a3938}
+.btn-primary:hover{background-color:#7a3938;border-color:#7a3938}
 .dark .btn-primary,.btn-gold{background:var(--gold);color:var(--forest);border-color:var(--gold)}
-.dark .btn-primary:hover,.btn-gold:hover{background:#d0a26a;border-color:#d0a26a}
+.dark .btn-primary:hover,.btn-gold:hover{background-color:#d0a26a;border-color:#d0a26a}
 .btn-ghost{color:var(--ink);border-color:var(--slate);background:transparent}
 .btn-ghost:hover{background:rgba(74,89,86,.08)}
 .dark .btn-ghost{color:var(--on-dark);border-color:rgba(208,214,202,.45)}
@@ -83,8 +83,8 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 .nav .drop.open > button svg{transform:rotate(180deg)}
 .nav .menu{position:absolute;top:calc(100% + .6rem);left:0;min-width:15rem;background:var(--paper);border:1px solid var(--rule);box-shadow:0 12px 30px -16px rgba(24,36,31,.35);padding:.5rem 0;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s,transform .18s,visibility .18s}
 .nav .drop.open .menu{opacity:1;visibility:visible;transform:none}
-.nav .menu a{display:block;color:var(--ink);text-decoration:none;padding:.55rem 1.1rem}
-.nav .menu a:hover,.nav .menu a[aria-current="page"]{color:var(--oxblood);background:var(--paper-2)}
+.nav .menu a:not(.btn){display:block;color:var(--ink);text-decoration:none;padding:.55rem 1.1rem}
+.nav .menu a:not(.btn):hover,.nav .menu a:not(.btn)[aria-current="page"]{color:var(--oxblood);background:var(--paper-2)}
 .site-header .btn{margin-left:.75rem;padding:.65rem 1.05rem;font-size:.98rem;white-space:nowrap}
 .menu-toggle{display:none;margin-left:auto;background:none;border:0;color:var(--ink);padding:.5rem;cursor:pointer}
 .menu-toggle svg{width:1.75rem;height:1.75rem}
@@ -215,7 +215,7 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 .cta-band p{color:rgba(255,255,255,.85);margin:1rem 0 0}
 .cta-band .tel{color:#fff}
 .btn-light{background:#fff;color:var(--oxblood);border-color:#fff}
-.btn-light:hover{background:var(--paper);border-color:var(--paper)}
+.btn-light:hover{background-color:var(--paper);border-color:var(--paper)}
 
 /* ---------- lists ---------- */
 .concerns{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 3rem;border-top:1px solid var(--rule)}
@@ -437,7 +437,7 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 .mega-side p{margin:0;font-size:1rem;line-height:1.45;color:var(--ink-soft)}
 .mega-side p b{color:var(--ink);font-family:var(--serif);font-size:1.2rem;font-weight:500;display:block;margin-bottom:.2rem}
 .nav .menu .mega-side .btn{display:inline-flex;color:#fff;padding:.7rem 1rem;font-size:.95rem;margin:0}
-.nav .menu .mega-side .btn:hover{background:#7a3938;color:#fff}
+.nav .menu .mega-side .btn:hover{background-color:#7a3938;color:#fff}
 .nav .menu .mega-side .tel{padding:0;font-size:.95rem;color:var(--ink)}
 .nav .menu .mega-side .tel:hover{background:none}
 .js .nav .mega .mega-item,.js .nav .mega .mega-side > *{opacity:0;transform:translateY(6px);transition:opacity .35s var(--ease),transform .35s var(--ease),background-color .2s}
@@ -580,7 +580,7 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 .mega-panel.is-default img{width:2.6rem;height:auto}
 .mega-panel .big{font-family:var(--serif);font-size:1.55rem;color:#fff !important;line-height:1.2}
 .nav .menu .mega-panel .btn{margin-top:auto;padding:.75rem 1.1rem;font-size:.95rem;color:var(--forest);background:var(--gold);border-color:var(--gold)}
-.nav .menu .mega-panel .btn:hover{background:#d0a26a;color:var(--forest)}
+.nav .menu .mega-panel .btn:hover{background-color:#d0a26a;color:var(--forest)}
 
 /* ---------- philosophy cards ---------- */
 .ff-label{font-family:var(--sans);font-size:1rem;color:var(--ink-soft);margin:0 0 .2rem !important}
@@ -830,7 +830,7 @@ body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/20
 .mega-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:.5rem .1rem .1rem;padding:.9rem .9rem;background:var(--paper-2);border-radius:2px}
 .mega-foot span{font-family:var(--sans);font-size:.95rem;color:var(--ink-soft);line-height:1.35}
 .nav .menu .mega-foot .btn{color:#fff;flex:none;margin:0}
-.nav .menu .mega-foot .btn:hover{background:#7a3938}
+.nav .menu .mega-foot .btn:hover{background-color:#7a3938}
 .js .nav .mega .mini-item{opacity:0;transform:translateY(6px);transition:opacity .3s var(--ease),transform .3s var(--ease),background-color .2s,border-color .2s}
 .js .nav .drop.open .mega .mini-item{opacity:1;transform:none}
 .nav .drop.open .mega .mini-item:nth-child(2){transition-delay:.03s}
@@ -1424,3 +1424,5 @@ body{overflow-anchor:none}
 .thread li.on .tic .g{stroke:var(--gold);opacity:1}
 .thread li.on .tic circle.g,.thread li.on .tic path.g[d^="M25 6"]{fill:rgba(191,143,84,.25)}
 @media (max-width:760px){.thread ol.has-icons{padding-left:3.75rem}.thread .tic{left:-3.75rem;width:2.5rem;height:2.5rem;margin-top:-1.25rem}.thread ol.has-icons::before,.thread ol.has-icons::after{left:1.25rem}}
+.nav .menu .mega-foot .btn{display:inline-flex}
+.nav .menu .mega-foot .btn:hover{background-color:#7a3938;color:#fff}
