@@ -762,6 +762,7 @@ pages["men.html"] = (
     page_hero("Biblical counseling for men",
               "Indwelling sin you just can't seem to defeat. Anger that scares your kids. A marriage gone cold. Many men carry these things for years without saying them out loud. You don't have to.",
               ("index.html#help", "How we help"), facts=True, icon="men") +
+    f'''<section class="statement"><div class="wrap">{ICONS["men"]}<p class="st-big">We have a particular burden for men.</p><p class="st-sub">Many never thought counseling was for them. We want them to know it is.</p></div></section>''' +
     concerns("Men come to us about",
              ["Sexual sin and pornography", "Anger and rage patterns", "A struggling marriage", "Leading their family well",
               "Discipline, drift, and wasted time", "Work addiction and perfectionism", "Isolation and no real friends", "Fatherhood"]) + scene_men() +
@@ -770,7 +771,7 @@ pages["men.html"] = (
         ("Root issues", "Lust, anger, and drift are usually symptoms. We go after the heart: what you love, what you fear, and what you worship.", ""),
         ("A plan and real accountability", "Expect homework and follow-through. With your permission, we'll bring trusted men from your church alongside you.", ""),
         ("Grace that changes you", "Real change flows from what Christ has accomplished for you, not from willpower and effort. The gospel doesn't excuse sin; it gives you the power to fight it.", "“For the grace of God has appeared… training us to renounce ungodliness and worldly passions.” Titus 2:11–12"),
-    ], note="<strong>We have a particular burden for men.</strong> Many never thought counseling was for them. We want them to know it is.") +
+    ]) +
     faq(men_faq) + cross("men.html") + cta("Take the first step.", "All new clients begin with a free, confidential 20-minute consultation. No pressure, and no obligation."),
     faq_jsonld(men_faq) + service_ld("men.html", "Biblical counseling for men", 'Biblical counseling for men in Yakima: pornography, anger, marriage, discipline, and leading a family.'),
 )

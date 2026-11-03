@@ -1471,3 +1471,11 @@ body{overflow-anchor:none}
 .btn-primary::before,.btn-light::before,.btn-gold::before{inset:var(--m) !important;opacity:1 !important;border-color:var(--g);transform:scale(1.035);transition:transform .45s cubic-bezier(.22,.61,.36,1) !important;will-change:transform}
 .btn-primary:hover::before,.btn-light:hover::before,.btn-gold:hover::before,.btn-primary:focus-visible::before,.btn-light:focus-visible::before,.btn-gold:focus-visible::before{transform:none}
 .btn::after{will-change:transform}
+
+/* ---------- statement band (men's page) ---------- */
+.statement{background:var(--paper-2);border-bottom:1px solid var(--rule);padding:4.5rem 0;text-align:center}
+.statement .wrap{display:flex;flex-direction:column;align-items:center}
+.statement .ic{width:2.8rem;height:2.8rem;margin-bottom:1.25rem}
+.st-big{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);line-height:1.12;letter-spacing:-.01em;color:var(--ink);margin:0;max-width:22ch}
+.st-sub{font-size:clamp(1.15rem,1.8vw,1.35rem);color:var(--ink-soft);margin:1rem auto 0;max-width:32rem}
+@media (max-width:760px){.statement{padding:3.25rem 0}}
