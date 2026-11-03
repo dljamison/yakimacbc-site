@@ -107,10 +107,6 @@ def header(page):
     m_about = "".join(f'<a class="m-item" href="{h}">{ICONS[ic]}<span>{n}</span>{CHEV_R}</a>' for h, n, d, ic in ABOUT)
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <div class="utility"><div class="wrap">
-    <span class="u-note">Biblical counseling in Yakima, a ministry of Saint Andrew's</span>
-    <span class="u-links"><a href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{ICONS["phone"]}{PHONE}</a><a {CLIENT_ATTR}>{ICONS["key"]}Current clients: book a session</a></span>
-  </div></div>
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/logo.png" alt="Yakima Center for Biblical Counseling" width="1253" height="408"></a>
     <nav class="nav" aria-label="Main">
@@ -121,7 +117,7 @@ def header(page):
         </div>
       </div>
       <div class="drop"><button type="button" aria-expanded="false" aria-haspopup="true"{about_cur}>About {CHEV}</button>
-        <div class="menu mini">{about}</div>
+        <div class="menu mini">{about}<a class="mini-item mini-client" {CLIENT_ATTR}>{ICONS["key"]}<span><b>Current clients</b><small>Book your next session</small></span></a></div>
       </div>
       <a href="fees.html"{cur(page,"fees.html")}>Sessions &amp; fees</a>
       <a href="churches.html"{cur(page,"churches.html")}>For churches</a>

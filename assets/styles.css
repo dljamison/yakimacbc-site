@@ -83,8 +83,8 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 .nav .drop.open > button svg{transform:rotate(180deg)}
 .nav .menu{position:absolute;top:calc(100% + .6rem);left:0;min-width:15rem;background:var(--paper);border:1px solid var(--rule);box-shadow:0 12px 30px -16px rgba(24,36,31,.35);padding:.5rem 0;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s,transform .18s,visibility .18s}
 .nav .drop.open .menu{opacity:1;visibility:visible;transform:none}
-.nav .menu a:not(.btn){display:block;color:var(--ink);text-decoration:none;padding:.55rem 1.1rem}
-.nav .menu a:not(.btn):hover,.nav .menu a:not(.btn)[aria-current="page"]{color:var(--oxblood);background:var(--paper-2)}
+.nav .menu a:where(:not(.btn)){display:block;color:var(--ink);text-decoration:none;padding:.55rem 1.1rem}
+.nav .menu a:where(:not(.btn)):hover,.nav .menu a:where(:not(.btn))[aria-current="page"]{color:var(--oxblood);background:var(--paper-2)}
 .site-header .btn{margin-left:.75rem;padding:.65rem 1.05rem;font-size:.98rem;white-space:nowrap}
 .menu-toggle{display:none;margin-left:auto;background:none;border:0;color:var(--ink);padding:.5rem;cursor:pointer}
 .menu-toggle svg{width:1.75rem;height:1.75rem}
@@ -1453,3 +1453,21 @@ body{overflow-anchor:none}
 .utility .ic .s{stroke:var(--sage)}
 .site-header.condensed .utility{max-height:0}
 @media (max-width:1120px){.utility{display:none}}
+
+/* ---------- current clients live in the About menu, set apart ---------- */
+.utility{display:none !important}
+.nav .menu .mini-client{margin-top:.35rem;border-top:1px solid var(--rule);border-radius:0 0 3px 3px;padding-top:1rem}
+.nav .menu .mini-client b{color:var(--oxblood)}
+.nav .menu .mini-client:hover{border-top-color:transparent}
+
+/* ---------- buttons: one smooth fade for the whole panel ----------
+   The line colour is a registered property, so it can fade; nothing resizes or reflows. */
+@property --g{syntax:'<color>';inherits:true;initial-value:transparent}
+.btn-primary,.btn-light,.btn-gold{
+  --g:transparent;
+  background-size:calc(var(--m) + 1px) calc(var(--m) + 1px),calc(var(--m) + 1px) calc(var(--m) + 1px),calc(var(--m) + 1px) calc(var(--m) + 1px),calc(var(--m) + 1px) calc(var(--m) + 1px),1px var(--m),1px var(--m),var(--m) 1px,var(--m) 1px !important;
+  transition:--g .4s ease,background-color .3s ease,color .3s ease,transform .15s ease !important}
+.btn-primary:hover,.btn-light:hover,.btn-gold:hover,.btn-primary:focus-visible,.btn-light:focus-visible,.btn-gold:focus-visible{--g:var(--cut-bg)}
+.btn-primary::before,.btn-light::before,.btn-gold::before{inset:var(--m) !important;opacity:1 !important;border-color:var(--g);transform:scale(1.035);transition:transform .45s cubic-bezier(.22,.61,.36,1) !important;will-change:transform}
+.btn-primary:hover::before,.btn-light:hover::before,.btn-gold:hover::before,.btn-primary:focus-visible::before,.btn-light:focus-visible::before,.btn-gold:focus-visible::before{transform:none}
+.btn::after{will-change:transform}
