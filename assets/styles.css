@@ -1408,3 +1408,19 @@ body{overflow-anchor:none}
   .site-footer .legal{margin-top:1.1rem;font-size:.76rem}
   .site-footer .legal .copy{font-size:.8rem}
 }
+
+/* ---------- family scene: the four moments of Deuteronomy 6:7, each with its own icon ---------- */
+.thread ol.has-icons{padding-left:4.25rem}
+.thread ol.has-icons::before,.thread ol.has-icons::after{left:1.45rem;top:1.9rem;bottom:1.9rem}
+.thread ol.has-icons::after{height:calc((100% - 3.8rem) * var(--p,0))}
+.thread ol.has-icons li{display:flex;align-items:center;min-height:4.4rem;padding:.55rem 0}
+.thread ol.has-icons li::before{display:none}
+.thread .tic{position:absolute;left:-4.25rem;top:50%;width:2.9rem;height:2.9rem;margin-top:-1.45rem;padding:.35rem;background:var(--forest);border:1.5px solid rgba(208,214,202,.28);border-radius:50%;z-index:1;transition:border-color .45s,transform .45s var(--ease),box-shadow .45s}
+.thread .tic *{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .45s,fill .45s,opacity .45s}
+.thread .tic .s{stroke:var(--sage);opacity:.35}
+.thread .tic .g{stroke:var(--sage);opacity:.35}
+.thread li.on .tic{border-color:var(--gold);transform:scale(1.08);box-shadow:0 0 0 5px rgba(191,143,84,.12),0 0 22px rgba(191,143,84,.25)}
+.thread li.on .tic .s{stroke:var(--on-dark);opacity:1}
+.thread li.on .tic .g{stroke:var(--gold);opacity:1}
+.thread li.on .tic circle.g,.thread li.on .tic path.g[d^="M25 6"]{fill:rgba(191,143,84,.25)}
+@media (max-width:760px){.thread ol.has-icons{padding-left:3.75rem}.thread .tic{left:-3.75rem;width:2.5rem;height:2.5rem;margin-top:-1.25rem}.thread ol.has-icons::before,.thread ol.has-icons::after{left:1.25rem}}
