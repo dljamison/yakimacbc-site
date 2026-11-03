@@ -11,7 +11,8 @@ EMAIL = "david.jamison@yakimacbc.org"
 SUBSTACK = "https://ycbc.substack.com"
 CHURCH = "https://www.saintandrewsyakima.org/"
 GIVE = "https://standrewsyakima.churchcenter.com/giving/to/biblical-counseling-center"
-BOOK_ATTR = f'href="{BOOK}" target="_blank" rel="noopener"'
+BOOK_ATTR = f'href="{BOOK}" target="_blank" rel="noopener" data-goatcounter-click="book-consultation" data-goatcounter-title="Book a free consultation"'
+GOATCOUNTER = "yakimacbc"
 
 HELP = [
     ("marriage.html", "Marriage", "Conflict, distance, broken trust, and preparing well for marriage."),
@@ -134,7 +135,7 @@ def header(page):
   </div>
   <div class="m-foot">
     <a class="btn btn-gold" {BOOK_ATTR}>Book a free consultation</a>
-    <a class="m-tel" href="{TEL}">or call {PHONE}</a>
+    <a class="m-tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call {PHONE}</a>
     <p class="mob-tag">{TAGLINE}</p>
   </div>
 </div>'''
@@ -157,7 +158,7 @@ FOOTER = f'''<footer class="site-footer">
       </div>
       <div>
         <h4>Visit or call</h4>
-        <ul class="foot-contact"><li>Upper floor, 32 N Front St<br>Yakima, WA 98901</li><li><a href="{TEL}">{PHONE}</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li><a {BOOK_ATTR}>Schedule an appointment</a></li><li><a href="{GIVE}">Support the ministry</a></li></ul>
+        <ul class="foot-contact"><li>Upper floor, 32 N Front St<br>Yakima, WA 98901</li><li><a href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{PHONE}</a></li><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li><a {BOOK_ATTR}>Schedule an appointment</a></li><li><a href="{GIVE}">Support the ministry</a></li></ul>
       </div>
     </div>
     <div class="crisis-bar">
@@ -171,7 +172,7 @@ FOOTER = f'''<footer class="site-footer">
   </div>
 </footer>
 <div class="mobile-bar" aria-label="Quick actions">
-  <a class="call" href="{TEL}">{PHONE_ICON}<span>Call</span></a>
+  <a class="call" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{PHONE_ICON}<span>Call</span></a>
   <a class="book" {BOOK_ATTR}>Book a free consultation</a>
 </div>'''
 
@@ -235,12 +236,13 @@ def page(filename, title, description, body, extra_head=""):
 </main>
 {FOOTER}
 <script src="assets/site.js"></script>
+<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>'''
 
 
-DEFAULT_ACTIONS = f'<a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation</a><a class="tel" href="{TEL}">or call <b>{PHONE}</b></a>'
-PARTNER_ACTIONS = f'<a class="btn btn-primary" href="mailto:{EMAIL}?subject=Ministry%20partnership%20inquiry">Inquire about a ministry partnership</a><a class="tel" href="{TEL}">or call <b>{PHONE}</b></a>'
+DEFAULT_ACTIONS = f'<a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation</a><a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call <b>{PHONE}</b></a>'
+PARTNER_ACTIONS = f'<a class="btn btn-primary" href="mailto:{EMAIL}?subject=Ministry%20partnership%20inquiry">Inquire about a ministry partnership</a><a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call <b>{PHONE}</b></a>'
 
 
 def cta(title="The first conversation is free.", text="All new clients begin with a free 20-minute consultation. Tell us what's going on, and we'll tell you honestly whether we can help.", actions=None):
@@ -256,7 +258,7 @@ def page_hero(h1, lede, crumb=None, facts=False, actions=None, icon=None, aside=
     c = f'<p class="crumb">{ICONS[icon] if icon else ""}<a href="{crumb[0]}">{crumb[1]}</a></p>' if crumb else ""
     f = f'''<aside class="facts" aria-label="At a glance">
       <ul><li><b>Free</b><span>20-minute first consultation</span></li><li><b>$100</b><span>per 50–60 minute session</span></li><li><b>In person or video</b><span>Downtown Yakima or secure video</span></li></ul>
-      <a class="tel" href="{TEL}">Call <b>{PHONE}</b></a>
+      <a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">Call <b>{PHONE}</b></a>
     </aside>''' if facts else (aside or "")
     acts = "" if actions == "" else f'<div class="actions">{actions or DEFAULT_ACTIONS}</div>'
     return f'''<section class="page-hero{' has-facts' if (facts or aside) else ''} {variant}">
@@ -482,7 +484,7 @@ def path_graphic():
 
 def contact_card():
     return f'''<aside class="contact-card" aria-label="Contact details">
-      <a href="{TEL}">{ICONS["phone"]}<span><small>Call</small>{PHONE}</span></a>
+      <a href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{ICONS["phone"]}<span><small>Call</small>{PHONE}</span></a>
       <a href="mailto:{EMAIL}">{ICONS["mail"]}<span><small>Email</small>{EMAIL}</span></a>
       <div>{ICONS["pin"]}<span><small>Office</small>Upper floor, 32 N Front Street<br>Yakima, WA 98901</span></div>
     </aside>'''
@@ -619,7 +621,7 @@ pages["index.html"] = (
       <p class="kicker">{TAGLINE}</p>
       <h1><span class="line"><span>Truth that</span></span><span class="line"><span>transforms.</span></span></h1>
       <p class="lede">Marriage falling apart. Kids rebelling. Depression settling in like fog and indwelling sin you just can't seem to defeat. Life has a way of serving up challenges that leave us scrambling for answers. At YCBC we don't offer quick fixes or shallow optimism, we offer something better: the sufficiency, authority and wisdom of God's Word applied to your actual struggles.</p>
-      <div class="actions"><a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation</a><a class="tel" href="{TEL}">or call <b>{PHONE}</b></a></div>
+      <div class="actions"><a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation</a><a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call <b>{PHONE}</b></a></div>
     </div>
     <figure class="hero-photo"><div class="bevel"><picture><source srcset="assets/bible.webp" type="image/webp"><img src="assets/bible.jpg" alt="An open Bible" width="960" height="1200"></picture></div></figure>
   </div>
@@ -980,7 +982,7 @@ pages["privacy.html"] = (
   <h2>Booking and client records</h2>
   <p>Appointments and client records are handled through Carepatron, a secure practice-management platform. Information you enter there is governed by Carepatron's privacy policy and by the consent form you receive before counseling begins.</p>
   <h2>Analytics and advertising</h2>
-  <p>We may use tools such as Google Analytics and Google Ads to understand how visitors find and use this site. These tools use cookies and collect general information like pages visited and the device used. They don't tell us who you are. You can limit this through your browser settings or at adssettings.google.com.</p>
+  <p>We use GoatCounter, a privacy-friendly visitor counter, to see how many people visit and which pages they read. It uses no cookies and doesn't identify or track individual visitors. We may also use Google Ads tools to understand which ads lead people to this site; those tools may use cookies and don't tell us who you are. You can limit this through your browser settings or at adssettings.google.com.</p>
   <h2>Maps</h2>
   <p>Our Contact page shows an embedded Google Map. Google may set cookies when the map loads, under Google's own privacy policy.</p>
   <h2>What we don't do</h2>
@@ -1039,3 +1041,7 @@ LLMS = f"""# Yakima Center for Biblical Counseling (YCBC)
 """
 with open(os.path.join(OUT, "llms.txt"), "w") as f:
     f.write(LLMS)
+
+# GitHub Pages custom domain (must stay in the published files)
+with open(os.path.join(OUT, "CNAME"), "w") as f:
+    f.write("yakimacbc.org\n")
