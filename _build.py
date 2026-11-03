@@ -442,6 +442,49 @@ def window_graphic():
     return f'<div class="window-graphic" aria-hidden="true"><svg viewBox="0 0 200 360">{ray}{p}{lead}{frame}{sill}</svg></div>'
 
 
+def door_graphic():
+    """An arched doorway in the logo's style: the frame draws, then the door swings open to warm light."""
+    opening = "M60 330V95a40 40 0 0180 0v235z"
+    door = (f'<g class="leaf"><path class="pane slate" style="--i:0" d="{opening}"/>'
+            '<path class="lead" pathLength="1" d="M70 320V150h60v170M70 140v-40a30 30 0 0160 0v40z"/>'
+            '<circle class="knob" cx="126" cy="230" r="4"/></g>')
+    return ('<div class="hgfx door-graphic" aria-hidden="true"><svg viewBox="0 0 200 360">'
+            f'<path class="light" d="{opening}"/><circle class="glow" cx="100" cy="210" r="34"/>'
+            f'{door}'
+            '<path class="frame" pathLength="1" d="M48 342V93a52 52 0 01104 0v249z"/>'
+            '<path class="lead" pathLength="1" d="M60 330V95a40 40 0 0180 0v235z"/>'
+            '<path class="sill" d="M34 342h132v10H34z"/><path class="sill" d="M46 352h108v8H46z"/>'
+            '</svg></div>')
+
+
+def lamp_graphic():
+    """An oil lamp (Psalm 119:105): the outline draws, the body fills, then the flame catches."""
+    body = "M28 238c0-26 30-36 74-36 34 0 58 10 70 22l26-10c-4 18-18 28-34 32-18 14-40 20-66 20-46 0-70-10-70-28z"
+    return ('<div class="hgfx lamp-graphic" aria-hidden="true"><svg viewBox="0 0 230 300">'
+            '<circle class="glow" cx="192" cy="168" r="40"/>'
+            f'<path class="pane slate" style="--i:0" d="{body}"/>'
+            '<path class="pane sage" style="--i:1" d="M78 206c8-10 40-10 48 0z"/>'
+            f'<path class="frame" pathLength="1" d="{body}"/>'
+            '<path class="lead" pathLength="1" d="M70 266l-6 16h84l-6-14"/>'
+            '<path class="sill" d="M56 282h104v8H56z"/>'
+            '<path class="flame" d="M194 206c-12-8-14-24-4-38 3-4 4-10 3-16 10 8 18 22 14 36-2 9-7 15-13 18z"/>'
+            '<path class="flame-in" d="M195 204c-5-4-6-11-2-17 1 4 4 6 6 9 2 4 0 7-4 8z"/>'
+            '</svg></div>')
+
+
+def path_404_graphic():
+    """A winding path and a signpost, for the page-not-found page."""
+    return ('<div class="hgfx path404-graphic" aria-hidden="true"><svg viewBox="0 0 340 230">'
+            '<path class="lead hills" pathLength="1" d="M0 96c40-16 70-20 110-8s70 10 110-6 80-14 120 0"/>'
+            '<path class="frame trail" pathLength="1" d="M70 226c40-24 70-30 60-58s-60-28-30-54 70-14 90-26"/>'
+            '<path class="lead" pathLength="1" d="M262 214V92"/>'
+            '<path class="pane gold" style="--i:0" d="M262 104h52l12 12-12 12h-52z"/>'
+            '<path class="pane sage" style="--i:1" d="M262 140h-52l-12 12 12 12h52z"/>'
+            '<path class="lead" pathLength="1" d="M262 104h52l12 12-12 12h-52M262 140h-52l-12 12 12 12h52"/>'
+            '<path class="sill" d="M246 214h32v6h-32z"/>'
+            '</svg></div>')
+
+
 def path_graphic():
     """Three-step path for the fees page: consultation, sessions, change."""
     steps = [("Free", "20-minute consultation"), ("$100", "per 50–60 minute session"), ("Lasting change", "transformation, not simply relief")]
@@ -874,7 +917,7 @@ gen_faq = [
 pages["faq.html"] = (
     "FAQs | Yakima Center for Biblical Counseling",
     "Answers about biblical counseling in Yakima: how it differs from therapy, the counseling process, confidentiality, cost, insurance, and virtual sessions.",
-    page_hero("Questions, answered", "If you don't see your question here, call or email. We're glad to help.", actions="",
+    page_hero("Questions, answered", "If you don't see your question here, call or email. We're glad to help.", actions="", top=lamp_graphic(), variant="ph-gfx",
               aside=f'''<nav class="jump" aria-label="Jump to a topic"><p>Jump to</p><a href="#about-bc">{ICONS["book"]}<span>About biblical counseling</span></a><a href="#process">{ICONS["clock"]}<span>The counseling process</span></a><a href="#practical">{ICONS["card"]}<span>Cost and practical details</span></a></nav>''') +
     faq_groups([("about-bc", "About biblical counseling", gen_faq[0:2] + gen_faq[6:7]),
                 ("process", "The counseling process", gen_faq[2:6]),
@@ -886,7 +929,7 @@ pages["faq.html"] = (
 pages["contact.html"] = (
     "Contact & Book a Free Consultation | Yakima Center for Biblical Counseling",
     "Book a free 20-minute consultation with the Yakima Center for Biblical Counseling, or call (509) 731-4772. 32 N Front Street, Yakima, WA.",
-    page_hero("Let's talk.", "All new clients begin with a free 20-minute initial consultation. Pick a time on the calendar below, or call or email and we'll get back to you.", actions="", aside=contact_card()) +
+    page_hero("Let's talk.", "All new clients begin with a free 20-minute initial consultation. Pick a time on the calendar below, or call or email and we'll get back to you.", actions="", top=door_graphic(), variant="ph-gfx", aside=contact_card()) +
     f"""<section class="section contact-first">
   <div class="wrap split">
     <div>
@@ -939,7 +982,7 @@ pages["privacy.html"] = (
 pages["404.html"] = (
     "Page not found | Yakima Center for Biblical Counseling",
     "Page not found.",
-    page_hero("We can't find that page.", "It may have moved. Try the home page, or call us and we'll help you find what you need."),
+    page_hero("We can't find that page.", "It may have moved. Try the home page, or call us and we'll help you find what you need.", variant="ph-center", top=path_404_graphic()),
 )
 
 os.makedirs(OUT, exist_ok=True)
