@@ -515,12 +515,12 @@ def give_block(tint=True):
 </section>"""
 
 # ---------------------------------------------------------------- VETTED LISTS (from the current church-site page)
-L_DEP = ["Clinical depression and mood disorders", "Anxiety and panic disorders", "Seasonal depression (SAD)", "Post-partum depression",
-         "Social anxiety and phobias", "Obsessive-compulsive patterns", "Anxiety after frightening or painful events", "Fear and worry management"]
-L_TRANS = ["Job loss and career changes", "Retirement adjustments", "Empty nest syndrome", "Moving and relocation stress",
+L_DEP = ["Depression that won't lift", "Worry that won't let go", "Sudden waves of fear and panic", "Depression after having a baby",
+         "Dark seasons and long winters", "Fear of people and what they think", "A tormented conscience and nagging doubts", "Fear that lingers after painful events"]
+L_TRANS = ["Job loss and career changes", "Retirement adjustments", "The empty nest", "Moving and relocation stress",
            "Health crises and chronic illness", "Financial hardship and debt", "Death of spouse or family member", "Major life disappointments"]
-L_ADDICT = ["Substance abuse (alcohol, drugs)", "Sexual addiction and pornography", "Gambling and financial addiction", "Food addiction and eating disorders",
-            "Technology and social media addiction", "Anger and rage patterns", "Lying and deception habits", "Work addiction and perfectionism"]
+L_ADDICT = ["Drunkenness and drug use", "Pornography and sexual sin", "Gambling and reckless spending", "Gluttony and overeating",
+            "Screens, phones, and social media", "Anger and rage", "Lying and deception", "Overwork and perfectionism"]
 L_MAR = ["Pre-marital counseling and preparation", "Communication skills and conflict resolution", "Sexual intimacy and purity issues", "Infidelity recovery and rebuilding trust",
          "Blended family dynamics", "In-law and extended family conflicts", "Separation and divorce recovery", "Single adult relationship concerns"]
 L_FAM = ["Child discipline and behavioral issues", "Teenage rebellion and communication", "Adoption and foster care challenges", "Sibling rivalry and family dynamics",
@@ -529,7 +529,7 @@ L_SPIRIT = ["Doubt and faith crises", "Spiritual dryness and disconnection", "Le
             "Church hurt and disappointment", "Backsliding and spiritual restoration", "Calling and purpose questions", "Suffering and theodicy issues", "Recovering from harsh or controlling church experiences"]
 
 PHILOSOPHY = """<p>Scripture is both our source and our system; the foundation that informs our understanding and the framework that guides our methodology. We don't just use Bible verses, we use biblical categories to understand your struggles and biblical solutions to address them.</p>
-<p>Our goal extends beyond symptom relief to worldview formation and heart transformation, helping you see and respond to life through God's eyes rather than the world's categories.</p>"""
+<p>Our goal extends beyond relief to worldview formation and heart transformation, helping you see and respond to life through God's eyes rather than the world's categories.</p>"""
 
 
 def what_is(home=False):
@@ -655,7 +655,7 @@ pages["index.html"] = (
       <div class="also-head"><h3 class="also-h">We also walk with people through</h3>{link_card("contact.html", "chat", "Not listed?", "Just ask")}</div>
       <div class="also-grid">
         {tag_card("turn", "Life transitions", L_TRANS)}
-        {tag_card("chain", "Addiction &amp; habitual sin", L_ADDICT)}
+        {tag_card("chain", "Addiction &amp; besetting sin", L_ADDICT)}
         {tag_card("flame", "Spiritual growth", L_SPIRIT)}
       </div>
     </div>
@@ -743,9 +743,9 @@ pages["anxiety.html"] = (
     page_hero("Biblical counseling for anxiety, worry &amp; stress",
               "Depression settling in like fog. Worry that won't let go. Scripture speaks to fear and sorrow with more honesty than you might expect, and it speaks to the whole person.",
               ("index.html#help", "How we help"), facts=True, icon="anxiety") +
-    concerns("Depression and anxiety", L_DEP) + scene_anxiety() +
+    concerns("Anxiety and depression", L_DEP) + scene_anxiety() +
     points("How we help with anxiety and depression", "", [
-        ("Body and soul", "Anxiety and depression affect the whole person, body and soul. We take your experience seriously and care for you as a whole person, not a set of symptoms.", ""),
+        ("Body and soul", "Anxiety and depression affect the whole person, body and soul. We take your experience seriously and care for you as a whole person, not a problem to be managed.", ""),
         ("What you're carrying", "Fear always has an object. Together we'll explore what you're afraid of losing, what you're trying to control, and where you're looking for security.", ""),
         ("Moving toward Christ", "Suffering calls for moving toward Christ, mourning with Him, and maturing through trials. You'll learn to bring specific fears to God and take the next faithful step.", "“Do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God.” Philippians 4:6"),
     ]) +
@@ -769,10 +769,10 @@ pages["men.html"] = (
     f'''<section class="statement"><div class="wrap">{ICONS["men"]}<p class="st-big">We have a particular burden for men.</p><p class="st-sub">Many never thought counseling was for them. We want them to know it is.</p></div></section>''' +
     concerns("Men come to us about",
              ["Sexual sin and pornography", "Anger and rage patterns", "A struggling marriage", "Leading their family well",
-              "Discipline, drift, and wasted time", "Work addiction and perfectionism", "Isolation and no real friends", "Fatherhood"]) + scene_men() +
+              "Discipline, drift, and wasted time", "Overwork and perfectionism", "Isolation and no real friends", "Fatherhood"]) + scene_men() +
     points("What to expect", "Straight talk, grounded in Scripture. Not a lecture, and not a pat on the back.", [
         ("Honest conversation", "You can say the real thing here. Nothing you bring will shock us, and you won't be talked down to.", ""),
-        ("Root issues", "Lust, anger, and drift are usually symptoms. We go after the heart: what you love, what you fear, and what you worship.", ""),
+        ("Root issues", "Lust, anger, and drift are usually fruit, not the root. We go after the heart: what you love, what you fear, and what you worship.", ""),
         ("A plan and real accountability", "Expect homework and follow-through. With your permission, we'll bring trusted men from your church alongside you.", ""),
         ("Grace that changes you", "Real change flows from what Christ has accomplished for you, not from willpower and effort. The gospel doesn't excuse sin; it gives you the power to fight it.", "“For the grace of God has appeared… training us to renounce ungodliness and worldly passions.” Titus 2:11–12"),
     ]) +
@@ -807,14 +807,14 @@ pages["biblical-counseling.html"] = (
     "What Is Biblical Counseling? | YCBC Yakima",
     "What biblical counseling is, how it differs from therapy, and our philosophy, commitments, and distinctives. Biblical counseling in Yakima, WA.",
     page_hero("What is biblical counseling?", TAGLINE, variant="ph-center", top=window_graphic()) +
-    statement("compass", "Transformation, not simply relief.", "We don't just address symptoms or offer coping strategies. We help you see and respond to life through God's eyes.") +
+    statement("compass", "Transformation, not simply relief.", "We don't just patch over problems or offer quick fixes. We help you see and respond to life through God's eyes.") +
     f'''{what_is()}
 <section class="section">
   <div class="wrap split">
     <div><h2>Biblical counseling and therapy</h2></div>
     <div>
       <p class="lede">We apply Scripture to life's challenges rather than psychological techniques. Our counselors are trained in biblical counseling methodology, not licensed as mental health professionals.</p>
-      <p>Our goal is transformation, not simply relief. Rather than managing symptoms, we go to the heart: what you love, fear, and worship, and to Christ, who changes people from the inside out.</p>
+      <p>Our goal is transformation, not simply relief. Rather than managing the surface, we go to the heart: what you love, fear, and worship, and to Christ, who changes people from the inside out.</p>
     </div>
   </div>
 </section>
@@ -837,7 +837,7 @@ pages["biblical-counseling.html"] = (
 <section class="section sage">
   <div class="wrap">
     <div class="section-head"><h2>Our distinctives</h2><p class="lede">What sets YCBC apart.</p></div>
-    <div class="dist-grid swipe"><article class="dist">{ICONS["book"]}<h3>Theologically grounded care</h3><p class="dist-sum">Seminary-level training in theology and biblical interpretation, so Scripture is handled rightly.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>Our counselor brings seminary-level training in theology and biblical interpretation. This isn't just good intentions, it's rigorous theological grounding that equips us to handle Scripture rightly and apply it to life's complexity.</p></div></div></details></article><article class="dist">{ICONS["paths"]}<h3>Tailored to specific issues</h3><p class="dist-sum">We counsel struggles rooted in sin and struggles rooted in suffering differently.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We distinguish between struggles rooted primarily in sin and those rooted primarily in suffering, counseling each differently. Sin requires confession, confrontation, conformity to Christ, and commitment to change. Suffering calls for moving toward Christ, mourning with Him, maturing through trials, and eventually ministering comfort to others.</p></div></div></details></article><article class="dist">{ICONS["church"]}<h3>Church-integrated ministry</h3><p class="dist-sum">We work alongside your pastors and elders, never in place of them.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>YCBC is part of the local church. With your permission, we coordinate with your pastors to ensure consistent care. When conflicts arise between our guidance and your church leadership, we defer to your elders or conclude counseling. We believe transformation happens through the ordinary means of grace (God's Word, prayer, sacraments, and community) pursued together, not in isolation.</p></div></div></details></article><article class="dist">{ICONS["compass"]}<h3>Whole-life transformation</h3><p class="dist-sum">Not coping strategies, but a whole life ordered under Christ's lordship.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We don't just address symptoms or offer coping strategies. We help you develop a comprehensive Christian worldview, cultivate spiritual disciplines (including Scripture memory, meditation, and prayer), and order your entire life under Christ's lordship. The goal is Christlikeness and participation in His mission.</p></div></div></details></article><article class="dist">{ICONS["door"]}<h3>Conviction with openness</h3><p class="dist-sum">Clear convictions, gladly serving believers across denominational lines.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We hold clear theological convictions while serving believers across denominational lines. God's Word is for Christians of all stripes. Likewise, while we're grounded in Scripture's authority we also recognize God's good gifts through common grace, including the real benefits that medicine and science can provide. This means we can appreciate medical interventions while maintaining that Scripture interprets everything and that ultimate transformation comes through Christ alone.</p></div></div></details></article><article class="dist dist-cta"><h3>See it for yourself</h3><p class="dist-sum">All new clients begin with a free 20-minute consultation, with no cost and no commitment.</p><a class="btn btn-gold" {BOOK_ATTR}>Book a free consultation</a></article></div>
+    <div class="dist-grid swipe"><article class="dist">{ICONS["book"]}<h3>Theologically grounded care</h3><p class="dist-sum">Seminary-level training in theology and biblical interpretation, so Scripture is handled rightly.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>Our counselor brings seminary-level training in theology and biblical interpretation. This isn't just good intentions, it's rigorous theological grounding that equips us to handle Scripture rightly and apply it to life's complexity.</p></div></div></details></article><article class="dist">{ICONS["paths"]}<h3>Tailored to specific issues</h3><p class="dist-sum">We counsel struggles rooted in sin and struggles rooted in suffering differently.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We distinguish between struggles rooted primarily in sin and those rooted primarily in suffering, counseling each differently. Sin requires confession, confrontation, conformity to Christ, and commitment to change. Suffering calls for moving toward Christ, mourning with Him, maturing through trials, and eventually ministering comfort to others.</p></div></div></details></article><article class="dist">{ICONS["church"]}<h3>Church-integrated ministry</h3><p class="dist-sum">We work alongside your pastors and elders, never in place of them.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>YCBC is part of the local church. With your permission, we coordinate with your pastors to ensure consistent care. When conflicts arise between our guidance and your church leadership, we defer to your elders or conclude counseling. We believe transformation happens through the ordinary means of grace (God's Word, prayer, sacraments, and community) pursued together, not in isolation.</p></div></div></details></article><article class="dist">{ICONS["compass"]}<h3>Whole-life transformation</h3><p class="dist-sum">Not quick fixes, but a whole life ordered under Christ's lordship.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We don't just patch over problems or offer quick fixes. We help you develop a comprehensive Christian worldview, cultivate spiritual disciplines (including Scripture memory, meditation, and prayer), and order your entire life under Christ's lordship. The goal is Christlikeness and participation in His mission.</p></div></div></details></article><article class="dist">{ICONS["door"]}<h3>Conviction with openness</h3><p class="dist-sum">Clear convictions, gladly serving believers across denominational lines.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We hold clear theological convictions while serving believers across denominational lines. God's Word is for Christians of all stripes. Likewise, while we're grounded in Scripture's authority we also recognize God's good gifts through common grace, including the real benefits that medicine and science can provide. This means we can appreciate medical interventions while maintaining that Scripture interprets everything and that ultimate transformation comes through Christ alone.</p></div></div></details></article><article class="dist dist-cta"><h3>See it for yourself</h3><p class="dist-sum">All new clients begin with a free 20-minute consultation, with no cost and no commitment.</p><a class="btn btn-gold" {BOOK_ATTR}>Book a free consultation</a></article></div>
   </div>
 </section>''' + cta(),
 )
@@ -888,7 +888,7 @@ pages["about.html"] = (
     <div><h2>About David</h2></div>
     <div class="prose-lg">
       <p>David holds a Master of Arts in Counseling from Westminster Theological Seminary and has also pursued graduate theological study at Redemption Seminary. With several years of counseling experience specializing in individual and marriage counseling, he serves as Director of Discipleship and Counseling at Saint Andrew's, integrating his pastoral heart with his commitment to the sufficiency of God's Word for genuine life transformation.</p>
-      <p>David counsels individuals and couples facing challenges ranging from anxiety, anger, and relational difficulties to complex issues like suicidal ideation and scrupulosity. His approach centers on utilizing Scripture to help believers walk more faithfully with Christ, believing that God's Word provides both the framework for understanding life's struggles and the divine resources for change. Additionally, his ministerial and theological training equips him to serve believers across denominational lines with both biblical depth and pastoral care.</p>
+      <p>David counsels individuals and couples facing challenges ranging from anxiety, anger, and relational difficulties to deeper struggles like despair and a tormented conscience. His approach centers on utilizing Scripture to help believers walk more faithfully with Christ, believing that God's Word provides both the framework for understanding life's struggles and the divine resources for change. Additionally, his ministerial and theological training equips him to serve believers across denominational lines with both biblical depth and pastoral care.</p>
       <p>David and his wife, Lauren, have two young sons. In his spare time David likes to read, play games, and spend time with friends.</p>
     </div>
   </div>
@@ -929,7 +929,7 @@ gen_faq = [
     ("What makes biblical counseling different from other types of counseling?",
      """<ul class="faq-list"><li><b>Divine wisdom for life's complexities.</b> Scripture provides God's own perspective on your struggles, offering unchanging truth and reliable guidance that transcends human insight and cultural trends.</li>
 <li><b>Heart transformation, not just relief or management.</b> We believe God's Word has power to create real change at the deepest level, transforming the desires, beliefs, and loves that shape your life.</li>
-<li><b>Addressing root issues.</b> Rather than managing symptoms, we explore the heart-level dynamics (your deepest desires, fears, and worship) that drive patterns in your life.</li>
+<li><b>Addressing root issues.</b> Rather than managing outward behavior, we explore the heart-level dynamics (your deepest desires, fears, and worship) that drive patterns in your life.</li>
 <li><b>Living from gospel truth.</b> Real change flows from understanding and embracing what Christ has accomplished for you, not from trying to improve yourself through willpower and effort.</li>
 <li><b>Connected to your church community.</b> Biblical counseling strengthens your relationships within the body of Christ, fostering growth that continues beyond counseling sessions.</li></ul>"""),
     ("What makes biblical counseling different from therapy?", "We apply Scripture to life's challenges rather than psychological techniques. Our counselors are trained in biblical counseling methodology, not licensed as mental health professionals."),

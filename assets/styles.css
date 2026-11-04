@@ -306,14 +306,14 @@ p{margin:0 0 1.05em;max-width:var(--measure)}
 .js .bevel svg.frame .diag{transition-delay:.9s;transition-duration:.7s}
 .js .bevel img{opacity:0;transform:scale(1.04);transition:opacity 1.2s var(--ease) .2s,transform 1.6s var(--ease) .2s}
 .js .bevel.in img{opacity:1;transform:none}
-.js .hero h1 .line > span{transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.js .hero h1 .line > span{transform:translateY(105%);transition:transform .8s var(--ease)}
 .js .loaded .hero h1 .line > span{transform:none}
-.js .loaded .hero h1 .line:nth-child(2) > span{transition-delay:.12s}
-.js .loaded .hero h1 .line:nth-child(3) > span{transition-delay:.24s}
-.js .hero .lede,.js .hero .actions{opacity:0;transform:translateY(14px);transition:opacity 1s var(--ease) .5s,transform 1s var(--ease) .5s}
+.js .loaded .hero h1 .line:nth-child(2) > span{transition-delay:.08s}
+.js .loaded .hero h1 .line:nth-child(3) > span{transition-delay:.16s}
+.js .hero .lede,.js .hero .actions{opacity:1;transform:none}
 .js .hero .actions{transition-delay:.65s}
 .js .loaded .hero .lede,.js .loaded .hero .actions{opacity:1;transform:none}
-.js .hero-mark{opacity:0;transition:opacity 1.6s var(--ease) .3s}
+.js .hero-mark{opacity:1}
 .js .loaded .hero-mark{opacity:1}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -1018,7 +1018,7 @@ main .section h2.signed::after{clip-path:inset(0 0 0 0)}
 
 /* ---------- 5. the logo draws in once ---------- */
 .intro .brand{position:relative}
-.intro .brand img{animation:brandIn 1.5s var(--ease) both .15s}
+.intro .brand img{animation:none}
 @keyframes brandIn{0%{clip-path:inset(0 100% 0 0);opacity:0}25%{clip-path:inset(0 79% 0 0);opacity:1}100%{clip-path:inset(0 0 0 0);opacity:1}}
 
 /* ---------- seams ---------- */
