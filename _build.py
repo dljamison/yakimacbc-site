@@ -171,7 +171,7 @@ FOOTER = f'''<footer class="site-footer">
     </div>
     <div class="legal">
       <p><b>Religious ministry:</b> This ministry operates under Washington State religious exemption RCW 18.19.040(6). Our biblical counselors are not Washington state licensed mental health professionals and do not provide psychotherapy, psychological treatment, or mental health diagnosis. Biblical counseling is religious ministry, not professional therapy. <b>Church ministry:</b> Biblical counseling services are provided as ministry of <a href="{CHURCH}">Saint Andrew's Presbyterian Church</a> (PCA) and are based on biblical principles and theological teachings.</p>
-      <p class="copy"><span>© 2026 Yakima Center for Biblical Counseling</span><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></p>
+      <p class="copy"><span>© 2026 Yakima Center for Biblical Counseling</span><a href="beliefs.html">What we believe</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></p>
     </div>
   </div>
 </footer>
@@ -193,6 +193,7 @@ NEXT = {
     "faq.html": ("contact.html", "Schedule an appointment", "Start with a free 20-minute consultation."),
     "churches.html": ("biblical-counseling.html", "Biblical counseling", "What your members can expect from us."),
     "privacy.html": ("index.html", "Home", "Back to the beginning."),
+    "beliefs.html": ("biblical-counseling.html", "Biblical counseling", "How Scripture shapes the way we counsel."),
 }
 
 
@@ -837,7 +838,7 @@ pages["biblical-counseling.html"] = (
 <section class="section sage">
   <div class="wrap">
     <div class="section-head"><h2>Our distinctives</h2><p class="lede">What sets YCBC apart.</p></div>
-    <div class="dist-grid swipe"><article class="dist">{ICONS["book"]}<h3>Theologically grounded care</h3><p class="dist-sum">Seminary-level training in theology and biblical interpretation, so Scripture is handled rightly.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>Our counselor brings seminary-level training in theology and biblical interpretation. This isn't just good intentions, it's rigorous theological grounding that equips us to handle Scripture rightly and apply it to life's complexity.</p></div></div></details></article><article class="dist">{ICONS["paths"]}<h3>Tailored to specific issues</h3><p class="dist-sum">We counsel struggles rooted in sin and struggles rooted in suffering differently.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We distinguish between struggles rooted primarily in sin and those rooted primarily in suffering, counseling each differently. Sin requires confession, confrontation, conformity to Christ, and commitment to change. Suffering calls for moving toward Christ, mourning with Him, maturing through trials, and eventually ministering comfort to others.</p></div></div></details></article><article class="dist">{ICONS["church"]}<h3>Church-integrated ministry</h3><p class="dist-sum">We work alongside your pastors and elders, never in place of them.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>YCBC is part of the local church. With your permission, we coordinate with your pastors to ensure consistent care. When conflicts arise between our guidance and your church leadership, we defer to your elders or conclude counseling. We believe transformation happens through the ordinary means of grace (God's Word, prayer, sacraments, and community) pursued together, not in isolation.</p></div></div></details></article><article class="dist">{ICONS["compass"]}<h3>Whole-life transformation</h3><p class="dist-sum">Not quick fixes, but a whole life ordered under Christ's lordship.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We don't just patch over problems or offer quick fixes. We help you develop a comprehensive Christian worldview, cultivate spiritual disciplines (including Scripture memory, meditation, and prayer), and order your entire life under Christ's lordship. The goal is Christlikeness and participation in His mission.</p></div></div></details></article><article class="dist">{ICONS["door"]}<h3>Conviction with openness</h3><p class="dist-sum">Clear convictions, gladly serving believers across denominational lines.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We hold clear theological convictions while serving believers across denominational lines. God's Word is for Christians of all stripes. Likewise, while we're grounded in Scripture's authority we also recognize God's good gifts through common grace, including the real benefits that medicine and science can provide. This means we can appreciate medical interventions while maintaining that Scripture interprets everything and that ultimate transformation comes through Christ alone.</p></div></div></details></article><article class="dist dist-cta"><h3>See it for yourself</h3><p class="dist-sum">All new clients begin with a free 20-minute consultation, with no cost and no commitment.</p><a class="btn btn-gold" {BOOK_ATTR}>Book a free consultation</a></article></div>
+    <div class="dist-grid swipe"><article class="dist">{ICONS["book"]}<h3>Theologically grounded care</h3><p class="dist-sum">Seminary-level training in theology and biblical interpretation, so Scripture is handled rightly.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>Our counselor brings seminary-level training in theology and biblical interpretation. This isn't just good intentions, it's rigorous theological grounding that equips us to handle Scripture rightly and apply it to life's complexity.</p></div></div></details></article><article class="dist">{ICONS["paths"]}<h3>Tailored to specific issues</h3><p class="dist-sum">We counsel struggles rooted in sin and struggles rooted in suffering differently.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We distinguish between struggles rooted primarily in sin and those rooted primarily in suffering, counseling each differently. Sin requires confession, confrontation, conformity to Christ, and commitment to change. Suffering calls for moving toward Christ, mourning with Him, maturing through trials, and eventually ministering comfort to others.</p></div></div></details></article><article class="dist">{ICONS["church"]}<h3>Church-integrated ministry</h3><p class="dist-sum">We work alongside your pastors and elders, never in place of them.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>YCBC is part of the local church. With your permission, we coordinate with your pastors to ensure consistent care. When conflicts arise between our guidance and your church leadership, we defer to your elders or conclude counseling. We believe transformation happens through the ordinary means of grace (God's Word, prayer, sacraments, and community) pursued together, not in isolation.</p></div></div></details></article><article class="dist">{ICONS["compass"]}<h3>Whole-life transformation</h3><p class="dist-sum">Not quick fixes, but a whole life ordered under Christ's lordship.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We don't just patch over problems or offer quick fixes. We help you develop a comprehensive Christian worldview, cultivate spiritual disciplines (including Scripture memory, meditation, and prayer), and order your entire life under Christ's lordship. The goal is Christlikeness and participation in His mission.</p></div></div></details></article><article class="dist">{ICONS["door"]}<h3>Conviction with openness</h3><p class="dist-sum">Clear convictions, gladly serving believers across denominational lines. <a href="beliefs.html">What we believe</a>.</p><details class="dist-more"><summary><span class="o">Read more</span><span class="c">Show less</span>{CHEV}</summary><div class="answer"><div class="answer-in"><p>We hold clear theological convictions while serving believers across denominational lines. God's Word is for Christians of all stripes. Likewise, while we're grounded in Scripture's authority we also recognize God's good gifts through common grace, including the real benefits that medicine and science can provide. This means we can appreciate medical interventions while maintaining that Scripture interprets everything and that ultimate transformation comes through Christ alone.</p></div></div></details></article><article class="dist dist-cta"><h3>See it for yourself</h3><p class="dist-sum">All new clients begin with a free 20-minute consultation, with no cost and no commitment.</p><a class="btn btn-gold" {BOOK_ATTR}>Book a free consultation</a></article></div>
   </div>
 </section>''' + cta(),
 )
@@ -897,22 +898,52 @@ pages["about.html"] = (
 )
 
 # ---------------------------------------------------------------- CHURCHES
+TALK = f'href="mailto:{EMAIL}?subject=Ministry%20partnership" data-goatcounter-click="church-inquiry" data-goatcounter-title="Church inquiry"'
+CHURCH_ACTIONS = f'<a class="btn btn-primary" {TALK}>Talk with David</a><a class="btn btn-ghost" href="beliefs.html">What we believe</a>'
+CHURCH_CTA = f'<a class="btn btn-primary" {TALK}>Talk with David</a><a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call <b>{PHONE}</b></a>'
 pages["churches.html"] = (
-    "Ministry Partnerships for Churches | YCBC Yakima",
-    "Yakima Valley pastors: partner with YCBC for trusted biblical counseling referrals, reduced member rates, and care under your elders' oversight.",
-    page_hero("For pastors &amp; churches", "Most pastors don't have the hours for long-term counseling. A ministry partnership gives your congregation a trusted place for biblical care, under your oversight.", actions=PARTNER_ACTIONS, aside=hub_graphic()) +
-    statement("church", "Rooted in Scripture. Serving across denominational lines.", "We gladly partner with churches that share a commitment to the authority and sufficiency of Scripture.") +
+    "For Pastors & Churches | Biblical Counseling Partnerships | YCBC Yakima",
+    "Yakima Valley pastors: refer with confidence. Scripture-grounded biblical counseling under your elders' oversight, with reduced rates for partner churches.",
+    page_hero("For pastors &amp; churches", "You can't carry every long-term case alone, and you don't have to. We give your people sustained, Scripture-grounded care, under your oversight.", actions=CHURCH_ACTIONS, aside=hub_graphic()) +
+    statement("church", "Rooted in Scripture. Serving across denominational lines.", 'We gladly partner with churches that share a commitment to the authority and sufficiency of Scripture. <a href="beliefs.html">Read what we believe</a>.') +
     f'''<section class="section">
   <div class="wrap">
-    <div class="section-head"><h2>What a partnership can look like</h2><p class="lede">Every church is different, so every partnership is shaped around your congregation. Most include some of the following.</p></div>
+    <div class="section-head"><h2>How referral works</h2></div>
+    <ol class="steps">
+      <li><h3>You refer</h3><p>Send them our way, or have them book a free 20-minute consultation.</p></li>
+      <li><h3>We counsel</h3><p>Weekly sessions, grounded in Scripture, with practical homework between them.</p></li>
+      <li><h3>We send them back</h3><p>Counseling should send people back into the life of your church, not replace it.</p></li>
+    </ol>
+    <p class="note"><strong>Not sure whether someone needs counseling?</strong> Call David at <a href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">{PHONE}</a>. He's glad to think it through with you.</p>
+  </div>
+</section>
+<section class="section tint">
+  <div class="wrap">
+    <div class="section-head"><h2>Our commitments to your church</h2></div>
     {icon_cards([
-        ("arrow", "A trusted referral", "When someone in your care needs more time than you can give, you know exactly where to send them, and that they'll receive counsel grounded in Scripture."),
-        ("tag", "Reduced member rates", "Members of partner churches receive reduced session fees, so cost is less of a barrier for your people."),
-        ("church", "Coordination with your elders", "With the counselee's permission, we keep you informed and coordinate care. When conflicts arise, we defer to your elders or conclude counseling."),
-        ("people", "Strengthening your church's care", "Counseling is meant to send people back into the life of the church: its preaching, sacraments, and fellowship. We're an aid to your church, not a replacement."),
-        ("book", "Equipping your people", "We're glad to talk about ways to help your leaders and members grow in caring for one another with God's Word."),
-        ("layers", "Levels that fit", "Partnerships come in several levels to fit churches of different sizes and needs."),
-    ], "even")}
+        ("church", "Your oversight", "With the counselee's permission, we keep you informed and coordinate care."),
+        ("framework", "Your authority", "If our counsel ever conflicts with your elders' guidance, we defer to you or conclude counseling."),
+        ("people", "Your congregation", "We aim to strengthen your people's ties to their church, never to pull them away from it."),
+    ])}
+    <p class="note"><strong>When it's serious.</strong> Safety always comes first. Where there's abuse, we don't do joint counseling, and we report as the law requires. Where someone may be at risk of harming themselves, we take immediate safety steps and involve family and emergency services as needed. When medical care is needed, we work alongside physicians and keep providing spiritual care.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap split">
+    <div><h2>Ministry partnerships</h2></div>
+    <div>
+      <p class="lede">Partner churches give their members reduced session rates, so cost is less of a barrier to getting help. Partnerships come in several levels to fit churches of different sizes.</p>
+      <p style="margin-top:1.5rem">{link_card(f"mailto:{EMAIL}?subject=Ministry%20partnership", "tag", "Partnerships", "Talk about what fits your church", ' data-goatcounter-click="church-inquiry"')}</p>
+    </div>
+  </div>
+</section>
+<section class="section tint">
+  <div class="wrap split">
+    <div><h2>Equipping your church</h2></div>
+    <div>
+      <p class="lede"><b>In development for 2027:</b> day trainings for elders, leaders, and whole congregations, and a certificate program in biblical counseling for church-approved leaders.</p>
+      <p style="margin-top:1.5rem">{link_card(f"mailto:{EMAIL}?subject=Trainings", "book", "Trainings", "Hear when they open", ' data-goatcounter-click="training-interest"')}</p>
+    </div>
   </div>
 </section>
 <!-- PASTOR ENDORSEMENT: uncomment and fill in once you have a quote and permission.
@@ -921,7 +952,25 @@ pages["churches.html"] = (
     <blockquote><p>“Quote from a partner pastor goes here.”</p><cite><b>Pastor's name</b>Church name, Yakima</cite></blockquote>
   </div>
 </section>
--->''' + cta("Let's talk about your church.", "We'll walk through what a ministry partnership could look like for your congregation.", actions=PARTNER_ACTIONS),
+-->''' + cta("Let's get coffee.", "We'll walk through what a ministry partnership could look like for your congregation.", actions=CHURCH_CTA),
+)
+
+# ---------------------------------------------------------------- BELIEFS
+BELIEFS = [
+    ("Scripture", 'The Bible is the inspired, inerrant Word of God. It is our final authority, and it is sufficient for life and godliness (2 Timothy 3:16–17; 2 Peter 1:3).'),
+    ("The Triune God", "There is one God, eternally existing in three persons: Father, Son, and Holy Spirit."),
+    ("Jesus Christ", "Jesus is fully God and fully man. He lived a sinless life, died in the place of sinners, rose bodily from the dead, ascended to the Father, and will return in glory."),
+    ("Humanity and sin", "God made us in his image, male and female. All have sinned, and sin reaches to the heart, shaping what we love, fear, and worship."),
+    ("Salvation", "We are saved by grace alone, through faith alone, in Christ alone, not by our own effort."),
+    ("Change", "The Holy Spirit transforms God's people through ordinary means: the Word, prayer, the sacraments, and the fellowship of the church."),
+    ("Marriage and sexuality", "God created humanity male and female. Marriage is a covenant between one man and one woman, and sexual intimacy belongs within marriage. We gladly counsel anyone who wants help, and we counsel according to these convictions."),
+    ("Accountability", f'YCBC is a ministry of <a href="{CHURCH}">Saint Andrew\'s Presbyterian Church</a> (PCA), and our counseling is overseen by its elders.'),
+]
+pages["beliefs.html"] = (
+    "What We Believe | Yakima Center for Biblical Counseling",
+    "The convictions of the Yakima Center for Biblical Counseling: Scripture, the Triune God, Christ, salvation, change, marriage, and accountability to the church.",
+    page_hero("What we believe", "We serve Christians from many churches and traditions. Here is what we hold in common, and what we will not compromise.", actions="") +
+    f'''<section class="section"><div class="wrap"><ul class="dl">{"".join(f"<li><strong>{t}</strong><span>{d}</span></li>" for t, d in BELIEFS)}</ul></div></section>''' + cta(),
 )
 
 # ---------------------------------------------------------------- FAQ
@@ -1051,6 +1100,7 @@ LLMS = f"""# Yakima Center for Biblical Counseling (YCBC)
 - [Sessions & fees]({DOMAIN}/fees)
 - [Meet the counselor]({DOMAIN}/about)
 - [For pastors & churches]({DOMAIN}/churches): ministry partnerships
+- [What we believe]({DOMAIN}/beliefs): statement of faith and accountability
 - [FAQs]({DOMAIN}/faq)
 - [Contact & booking]({DOMAIN}/contact)
 """
