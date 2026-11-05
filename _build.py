@@ -243,7 +243,7 @@ def page(filename, title, description, body, extra_head=""):
 <main id="main">
 {esv_links(body)}
 </main>
-{FOOTER}
+{FOOTER if filename != "churches.html" else FOOTER.replace(f'<a class="book" {BOOK_ATTR}>Book a free consultation</a>', f'<a class="book" {TALK}>Talk with David</a>')}
 <script src="assets/site.js?v={ASSET_V}"></script>
 <script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
@@ -899,12 +899,21 @@ pages["about.html"] = (
 
 # ---------------------------------------------------------------- CHURCHES
 TALK = f'href="mailto:{EMAIL}?subject=Ministry%20partnership" data-goatcounter-click="church-inquiry" data-goatcounter-title="Church inquiry"'
-CHURCH_ACTIONS = f'<a class="btn btn-primary" {TALK}>Talk with David</a><a class="btn btn-ghost" href="beliefs.html">What we believe</a>'
+CHURCH_ACTIONS = f'<a class="btn btn-primary" {TALK}>Talk with David</a><a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call <b>{PHONE}</b></a>'
 CHURCH_CTA = f'<a class="btn btn-primary" {TALK}>Talk with David</a><a class="tel" href="{TEL}" data-goatcounter-click="call" data-goatcounter-title="Phone call">or call <b>{PHONE}</b></a>'
 pages["churches.html"] = (
     "For Pastors & Churches | Biblical Counseling Partnerships | YCBC Yakima",
     "Yakima Valley pastors: refer with confidence. Scripture-grounded biblical counseling under your elders' oversight, with reduced rates for partner churches.",
     page_hero("For pastors &amp; churches", "You can't carry every long-term case alone, and you don't have to. We give your people sustained, Scripture-grounded care, under your oversight.", actions=CHURCH_ACTIONS, aside=hub_graphic()) +
+    f'''<section class="section">
+  <div class="wrap split">
+    <div><h2>A resource for your church</h2></div>
+    <div class="prose-lg">
+      <p>The Yakima Center for Biblical Counseling is a counseling ministry of Saint Andrew's Presbyterian Church (PCA), based in downtown Yakima. We exist to serve the churches of the Yakima Valley, not to compete with them.</p>
+      <p>Some struggles need more than a pastor can give in a single meeting: weekly sessions, homework, and months of patient, Scripture-grounded care. That's where we come in. When someone in your congregation needs that kind of help, we walk with them, keep you involved, and send them back into the life of your church.</p>
+    </div>
+  </div>
+</section>''' +
     statement("church", "Rooted in Scripture. Serving across denominational lines.", 'We gladly partner with churches that share a commitment to the authority and sufficiency of Scripture. <a href="beliefs.html">Read what we believe</a>.') +
     f'''<section class="section">
   <div class="wrap">
@@ -932,8 +941,8 @@ pages["churches.html"] = (
   <div class="wrap split">
     <div><h2>Ministry partnerships</h2></div>
     <div>
-      <p class="lede">Partner churches give their members reduced session rates, so cost is less of a barrier to getting help. Partnerships come in several levels to fit churches of different sizes.</p>
-      <p style="margin-top:1.5rem">{link_card(f"mailto:{EMAIL}?subject=Ministry%20partnership", "tag", "Partnerships", "Talk about what fits your church", ' data-goatcounter-click="church-inquiry"')}</p>
+      <p class="lede">Partnership makes that care easier to reach. Partner churches give their members reduced session rates, so cost is less of a barrier to getting help. Partnerships come in several levels to fit churches of different sizes.</p>
+      <div class="link-row">{link_card(f"mailto:{EMAIL}?subject=Ministry%20partnership", "tag", "Ministry partnerships", "Talk with David", ' data-goatcounter-click="church-inquiry"')}</div>
     </div>
   </div>
 </section>
@@ -942,7 +951,7 @@ pages["churches.html"] = (
     <div><h2>Equipping your church</h2></div>
     <div>
       <p class="lede"><b>In development for 2027:</b> day trainings for elders, leaders, and whole congregations, and a certificate program in biblical counseling for church-approved leaders.</p>
-      <p style="margin-top:1.5rem">{link_card(f"mailto:{EMAIL}?subject=Trainings", "book", "Trainings", "Hear when they open", ' data-goatcounter-click="training-interest"')}</p>
+      <div class="link-row">{link_card(f"mailto:{EMAIL}?subject=Trainings", "book", "Trainings", "Hear when they open", ' data-goatcounter-click="training-interest"')}</div>
     </div>
   </div>
 </section>
