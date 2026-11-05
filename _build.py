@@ -874,11 +874,11 @@ pages["about.html"] = (
     <div class="ph-main">
       <p class="crumb">Meet the counselor</p>
       <h1>David Jamison</h1>
-      <p class="lede">Director of Discipleship and Counseling at Saint Andrew's Presbyterian Church, with several years of experience in individual and marriage counseling.</p>
+      <p class="lede">Founder and director of the Yakima Center for Biblical Counseling, and a ruling elder at Saint Andrew's Presbyterian Church (PCA).</p>
       <ul class="cred-list">
-        <li>{ICONS["book"]}<span>MA in Counseling, Westminster Theological Seminary</span></li>
-        <li>{ICONS["people"]}<span>Individuals, couples, and families</span></li>
-        <li>{ICONS["church"]}<span>Ruling elder, Saint Andrew's Presbyterian Church</span></li>
+        <li>{ICONS["book"]}<span>MA in Counseling, Westminster Theological Seminary · CCEF training</span></li>
+        <li>{ICONS["people"]}<span>Individuals, couples, families, and teens</span></li>
+        <li>{ICONS["church"]}<span>Ruling elder, Presbyterian Church in America</span></li>
       </ul>
       <div class="actions"><a class="btn btn-primary" {BOOK_ATTR}>Book a free consultation with David</a></div>
     </div>
@@ -888,9 +888,10 @@ pages["about.html"] = (
   <div class="wrap split">
     <div><h2>About David</h2></div>
     <div class="prose-lg">
-      <p>David holds a Master of Arts in Counseling from Westminster Theological Seminary and has also pursued graduate theological study at Redemption Seminary. With several years of counseling experience specializing in individual and marriage counseling, he serves as Director of Discipleship and Counseling at Saint Andrew's, integrating his pastoral heart with his commitment to the sufficiency of God's Word for genuine life transformation.</p>
-      <p>David counsels individuals and couples facing challenges ranging from anxiety, anger, and relational difficulties to deeper struggles like despair and a tormented conscience. His approach centers on utilizing Scripture to help believers walk more faithfully with Christ, believing that God's Word provides both the framework for understanding life's struggles and the divine resources for change. Additionally, his ministerial and theological training equips him to serve believers across denominational lines with both biblical depth and pastoral care.</p>
-      <p>David and his wife, Lauren, have two young sons. In his spare time David likes to read, play games, and spend time with friends.</p>
+      <p>David founded the Yakima Center for Biblical Counseling in 2025 to bring careful, Scripture-grounded counseling to Yakima and to serve alongside the churches of the Valley. Since then he has counseled more than a hundred individuals, couples, families, and teenagers.</p>
+      <p>He holds a Master of Arts in Counseling from Westminster Theological Seminary, where he completed supervised field work. He has also trained with the Christian Counseling &amp; Educational Foundation (CCEF), and has done further graduate study in theology at Redemption Seminary.</p>
+      <p>David also serves at Saint Andrew's as a ruling elder and as Director of Discipleship and Counseling, where he preaches and trains the church's discipleship leaders.</p>
+      <p>David and his wife, Lauren, have two young sons. In his spare time he enjoys reading, board games, leatherworking, and spending time with friends.</p>
     </div>
   </div>
 </section>''' + cta(),
